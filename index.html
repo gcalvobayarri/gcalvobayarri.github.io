@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Personal academic website of Gabriel Calvo Bayarri, statistician and researcher at the University of Valencia.">
   <title>Gabriel Calvo Bayarri | Statistics</title>
+  <link rel="alternate" hreflang="en" href="https://gcalvobayarri.github.io/">
+  <link rel="alternate" hreflang="es" href="https://gcalvobayarri.github.io/es/">
+  <link rel="alternate" hreflang="x-default" href="https://gcalvobayarri.github.io/">
 
   <style>
     :root {
@@ -84,6 +87,19 @@
 
     .nav-links a:hover {
       color: var(--accent);
+    }
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding-left: 0.25rem;
+      border-left: 1px solid var(--border);
+    }
+
+    .language-switcher [aria-current="page"] {
+      color: var(--accent-dark);
+      font-weight: 700;
     }
 
     .hero {
@@ -238,6 +254,11 @@
           <li><a href="#about">About</a></li>
           <li><a href="#research">Research</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li class="language-switcher" aria-label="Language">
+            <span aria-current="page">EN</span>
+            <span aria-hidden="true">|</span>
+            <a href="/es/" lang="es" hreflang="es">ES</a>
+          </li>
         </ul>
       </nav>
     </div>
