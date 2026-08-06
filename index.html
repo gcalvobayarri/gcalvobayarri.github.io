@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal academic website of Gabriel Calvo Bayarri, statistician and researcher at the University of Valencia.">
+  <title>Gabriel Calvo Bayarri | Statistics</title>
+
+  <style>
+    :root {
+      --background: #f6f8fb;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --accent: #315c8c;
+      --accent-dark: #24476d;
+      --border: #dce3eb;
+      --max-width: 1000px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--background);
+    }
+
+    a {
+      color: var(--accent);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #f0b429;
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      align-items: center;
+      gap: 2.5rem;
+      padding: 5rem 0 4rem;
+    }
+
+    .portrait {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid var(--surface);
+      box-shadow: 0 8px 25px rgba(31, 41, 55, 0.15);
+    }
+
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 0 0 1rem;
+      font-size: 1.25rem;
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .introduction {
+      max-width: 700px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1.1rem;
+      border-radius: 0.5rem;
+      background: var(--accent);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .button:hover {
+      background: var(--accent-dark);
+    }
+
+    .button.secondary {
+      background: var(--surface);
+      color: var(--accent-dark);
+      border: 1px solid var(--border);
+    }
+
+    main section {
+      padding: 2rem 0;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+
+    .research-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .research-list li {
+      padding: 0.55rem 0.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      padding: 1.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 0.8rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 700px) {
+      nav,
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .portrait {
+        width: 140px;
+        height: 140px;
+      }
+
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <a class="brand" href="#top">Gabriel Calvo Bayarri</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top" class="container">
+    <section class="hero" aria-labelledby="page-title">
+      <img
+        class="portrait"
+        src="https://github.com/gcalvobayarri.png"
+        alt="Gabriel Calvo Bayarri"
+      >
+
+      <div>
+        <h1 id="page-title">Gabriel Calvo Bayarri</h1>
+        <p class="subtitle">Statistician · University of Valencia</p>
+        <p class="introduction">
+          I am a statistician working on Bayesian methods for longitudinal and
+          repeated-measures data, Bayesian networks, hierarchical modelling and
+          applications in medicine, biology and sports analytics.
+        </p>
+
+        <div class="buttons">
+          <a
+            class="button"
+            href="https://github.com/gcalvobayarri"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub profile
+          </a>
+          <a class="button secondary" href="#projects">View projects</a>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="about">
+        <h2>About me</h2>
+        <p>
+          My research focuses on the development and application of Bayesian
+          statistical models, particularly for complex longitudinal and
+          multivariate data. I also teach statistics and bio-statistics at the
+          University of Valencia.
+        </p>
+      </section>
+
+      <section id="research">
+        <h2>Research interests</h2>
+        <ul class="research-list">
+          <li>Bayesian statistics</li>
+          <li>Longitudinal data</li>
+          <li>Hierarchical models</li>
+          <li>Bayesian networks</li>
+          <li>Sports analytics</li>
+          <li>Biostatistics</li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>Selected projects</h2>
+
+        <div class="projects">
+          <article class="card">
+            <h3>
+              <a href="https://github.com/gcalvobayarri/hot_hand_model">
+                Hot hand model
+              </a>
+            </h3>
+            <p>R code for modelling hot-hand behaviour in basketball.</p>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://github.com/gcalvobayarri/Longitudinal_BNs">
+                Longitudinal Bayesian networks
+              </a>
+            </h3>
+            <p>Methods and code for Bayesian networks with longitudinal data.</p>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://github.com/gcalvobayarri/European_sardine_analysis">
+                European sardine analysis
+              </a>
+            </h3>
+            <p>Statistical analysis of longitudinal fisheries data.</p>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://github.com/gcalvobayarri/Wheelchair_basketball_lineups">
+                Wheelchair basketball line-ups
+              </a>
+            </h3>
+            <p>Statistical methods applied to wheelchair basketball line-ups.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Gabriel Calvo Bayarri · Hosted with GitHub Pages</p>
+    </div>
+  </footer>
+</body>
+</html>
