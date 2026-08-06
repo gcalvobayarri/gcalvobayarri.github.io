@@ -1,511 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal academic website of Gabriel Calvo Bayarri, statistician and researcher at the University of Valencia.">
-  <title>Gabriel Calvo Bayarri | Statistics</title>
-  <link rel="alternate" hreflang="en" href="https://gcalvobayarri.github.io/">
-  <link rel="alternate" hreflang="es" href="https://gcalvobayarri.github.io/es/">
-  <link rel="alternate" hreflang="x-default" href="https://gcalvobayarri.github.io/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Gabriel Calvo Bayarri — statistician working on Bayesian hierarchical and longitudinal models, at the Universitat de València and Biomathematics & Statistics Scotland.">
+<title>Gabriel Calvo Bayarri | Statistics</title>
+<link rel="alternate" hreflang="en" href="https://gcalvobayarri.github.io/">
+<link rel="alternate" hreflang="es" href="https://gcalvobayarri.github.io/es/">
+<link rel="alternate" hreflang="x-default" href="https://gcalvobayarri.github.io/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --background: #f6f8fb;
-      --surface: #ffffff;
-      --text: #1f2937;
-      --muted: #5f6b7a;
-      --accent: #315c8c;
-      --accent-dark: #24476d;
-      --border: #dce3eb;
-      --max-width: 1000px;
-    }
+<style>
+  :root{
+    --paper:      #f2efe6;
+    --paper-soft: #e9e4d6;
+    --ink:        #1e2a38;
+    --ink-soft:   #4a5568;
+    --slate:      #2b5876;
+    --slate-dark: #1c3a52;
+    --brass:      #a97d3f;
+    --line:       #d8d0bd;
+    --max: 880px;
+  }
 
-    * {
-      box-sizing: border-box;
-    }
+  *{ box-sizing:border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  html{ scroll-behavior:smooth; }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.65;
-      color: var(--text);
-      background: var(--background);
-    }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
 
-    a {
-      color: var(--accent);
-    }
+  body{
+    margin:0;
+    font-family:'Inter', Arial, Helvetica, sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+  }
 
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid #f0b429;
-      outline-offset: 3px;
-    }
+  .container{ width:min(92%, var(--max)); margin:0 auto; }
 
-    .container {
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
+  a{ color:var(--slate-dark); }
 
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-    }
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--brass);
+    outline-offset:3px;
+  }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 0;
-    }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--slate);
+  }
 
-    .brand {
-      color: var(--text);
-      font-weight: 700;
-      text-decoration: none;
-    }
+  h1,h2,h3{
+    font-family:'Fraunces', Georgia, serif;
+    font-weight:600;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:rgba(242,239,230,0.9);
+    backdrop-filter: blur(6px);
+    border-bottom:1px solid var(--line);
+  }
 
-    .nav-links a {
-      color: var(--text);
-      text-decoration: none;
-    }
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    gap:1rem; padding:1rem 0;
+  }
 
-    .nav-links a:hover {
-      color: var(--accent);
-    }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.05rem;
+    color:var(--ink);
+    text-decoration:none;
+  }
 
-    .language-switcher {
-      display: flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding-left: 0.25rem;
-      border-left: 1px solid var(--border);
-    }
+  .nav-links{
+    display:flex; flex-wrap:wrap; align-items:center;
+    gap:1.6rem; margin:0; padding:0; list-style:none;
+    font-size:0.92rem;
+  }
 
-    .language-switcher [aria-current="page"] {
-      color: var(--accent-dark);
-      font-weight: 700;
-    }
+  .nav-links a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+  }
 
-    .hero {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      align-items: center;
-      gap: 2.5rem;
-      padding: 5rem 0 4rem;
-    }
+  .nav-links a:hover{ color:var(--ink); border-color:var(--brass); }
 
-    .portrait {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid var(--surface);
-      box-shadow: 0 8px 25px rgba(31, 41, 55, 0.15);
-    }
+  .language-switcher{
+    display:flex; align-items:center; gap:0.4rem;
+    padding-left:1rem; margin-left:0.2rem;
+    border-left:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+  }
 
-    h1 {
-      margin: 0 0 0.5rem;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      line-height: 1.1;
-    }
+  .language-switcher [aria-current="page"]{ color:var(--ink); font-weight:600; }
+  .language-switcher a{ color:var(--ink-soft); text-decoration:none; }
+  .language-switcher a:hover{ color:var(--slate-dark); }
 
-    .subtitle {
-      margin: 0 0 1rem;
-      font-size: 1.25rem;
-      color: var(--accent-dark);
-      font-weight: 700;
-    }
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items:center;
+    gap:3rem;
+    padding:4.5rem 0 3.5rem;
+  }
 
-    .introduction {
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 1.08rem;
-    }
+  .hero h1{
+    margin:0 0 0.4rem;
+    font-size:clamp(2.4rem, 5.4vw, 3.6rem);
+    line-height:1.05;
+  }
 
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-    }
+  .subtitle{
+    margin:0 0 1.2rem;
+    font-size:1.08rem;
+    color:var(--slate-dark);
+    font-weight:600;
+  }
 
-    .button {
-      display: inline-block;
-      padding: 0.75rem 1.1rem;
-      border-radius: 0.5rem;
-      background: var(--accent);
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 700;
-    }
+  .introduction{ max-width:52ch; color:var(--ink-soft); font-size:1.03rem; }
 
-    .button:hover {
-      background: var(--accent-dark);
-    }
+  .buttons{ display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1.6rem; }
 
-    .button.secondary {
-      background: var(--surface);
-      color: var(--accent-dark);
-      border: 1px solid var(--border);
-    }
+  .button{
+    display:inline-flex; align-items:center; gap:0.4rem;
+    padding:0.68rem 1.05rem;
+    border-radius:0.35rem;
+    background:var(--slate-dark);
+    color:#f7f5ee;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.92rem;
+    transition:background 0.15s ease;
+  }
 
-    main section {
-      padding: 2rem 0;
-    }
+  .button:hover{ background:var(--ink); }
 
-    h2 {
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-    }
+  .button.secondary{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--ink);
+  }
 
-    .research-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      padding: 0;
-      list-style: none;
-    }
+  .button.secondary:hover{ background:var(--paper-soft); }
 
-    .research-list li {
-      padding: 0.55rem 0.8rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 999px;
-    }
+  /* hero signature: prior -> posterior density */
+  .signature{
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:0.6rem;
+    padding:1.3rem 1.3rem 1rem;
+  }
 
-    .publications {
-      display: grid;
-      gap: 1rem;
-    }
+  .signature svg{ width:100%; height:auto; display:block; }
 
-    .publication-meta {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.65rem;
-      margin: 0 0 0.75rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+  .signature-caption{
+    margin:0.6rem 0 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+  }
 
-    .open-access-badge {
-      display: inline-block;
-      padding: 0.2rem 0.55rem;
-      border-radius: 999px;
-      background: #e6f4ea;
-      color: #246b3c;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-    }
+  .prior-curve{
+    stroke:#b7b09a;
+    stroke-width:2;
+    fill:none;
+    stroke-dasharray:520;
+    stroke-dashoffset:520;
+    animation:draw 1.3s ease forwards;
+  }
 
-    .publication-link {
-      display: inline-block;
-      margin-top: 1rem;
-      font-weight: 700;
-      text-decoration: none;
-    }
+  .posterior-curve{
+    stroke:var(--slate);
+    stroke-width:2.5;
+    fill:none;
+    stroke-dasharray:520;
+    stroke-dashoffset:520;
+    animation:draw 1.3s ease 0.35s forwards;
+  }
 
-    .publication-link:hover {
-      text-decoration: underline;
-    }
+  .posterior-fill{
+    fill:var(--brass);
+    opacity:0;
+    animation:fadein 1s ease 1s forwards;
+  }
 
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes fadein{ to{ opacity:0.18; } }
 
-    .card {
-      padding: 1.4rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 0.8rem;
-    }
+  /* ---------- sections ---------- */
+  main section{ padding:2.6rem 0; border-top:1px solid var(--line); }
+  main section:first-child{ border-top:none; }
 
-    .card h3 {
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-    }
+  h2{ margin:0 0 1.1rem; font-size:1.55rem; }
 
-    .card p {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
+  .section-lede{ margin:-0.5rem 0 1.4rem; color:var(--ink-soft); max-width:62ch; }
 
-    footer {
-      margin-top: 3rem;
-      padding: 2rem 0;
-      text-align: center;
-      color: var(--muted);
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
+  /* research tags */
+  .research-list{
+    display:flex; flex-wrap:wrap; gap:0.6rem;
+    padding:0; margin:0; list-style:none;
+  }
 
-    @media (max-width: 700px) {
-      nav,
-      .hero {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
+  .research-list li{
+    display:flex; align-items:center; gap:0.5rem;
+    padding:0.5rem 0.9rem;
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:999px;
+    font-size:0.9rem;
+  }
 
-      .hero {
-        padding-top: 3rem;
-      }
+  .research-list li::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--brass);
+    flex-shrink:0;
+  }
 
-      .portrait {
-        width: 140px;
-        height: 140px;
-      }
+  /* publications */
+  .publications{ display:grid; gap:1.1rem; }
 
-      .projects {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  <!-- Bilingual website: English and Spanish versions -->
+  .pub-card{
+    padding:1.5rem 1.6rem;
+    background:#fbfaf5;
+    border:1px solid var(--line);
+    border-left:3px solid var(--slate);
+    border-radius:0.4rem;
+  }
+
+  .pub-card h3{
+    margin:0 0 0.6rem;
+    font-size:1.12rem;
+    line-height:1.35;
+  }
+
+  .pub-card h3 a{ color:var(--ink); text-decoration:none; }
+  .pub-card h3 a:hover{ color:var(--slate-dark); text-decoration:underline; }
+
+  .publication-meta{
+    display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem;
+    margin:0 0 0.75rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+  }
+
+  .open-access-badge{
+    display:inline-block;
+    padding:0.18rem 0.55rem;
+    border-radius:999px;
+    background:#e4ede3;
+    color:#2f5c34;
+    font-size:0.72rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+
+  .pub-card p{ margin:0; color:var(--ink-soft); }
+
+  .publication-link{
+    display:inline-block; margin-top:0.9rem;
+    font-weight:600; font-size:0.92rem;
+    text-decoration:none;
+  }
+
+  .publication-link:hover{ text-decoration:underline; }
+
+  /* timeline for activity */
+  .activity-list{ display:grid; gap:0.9rem; padding:0; margin:0; list-style:none; }
+
+  .activity-list li{
+    display:grid; grid-template-columns:6.5rem 1fr; gap:1rem;
+    padding-bottom:0.9rem; border-bottom:1px dashed var(--line);
+  }
+
+  .activity-list li:last-child{ border-bottom:none; padding-bottom:0; }
+
+  .activity-year{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem; color:var(--slate);
+  }
+
+  .activity-desc{ color:var(--ink-soft); }
+  .activity-desc strong{ color:var(--ink); }
+
+  /* projects */
+  .projects{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:1rem;
+  }
+
+  .card{
+    padding:1.4rem;
+    background:#fbfaf5;
+    border:1px solid var(--line);
+    border-radius:0.5rem;
+  }
+
+  .card h3{ margin:0 0 0.4rem; font-size:1.05rem; }
+  .card h3 a{ text-decoration:none; color:var(--ink); }
+  .card h3 a:hover{ color:var(--slate-dark); }
+  .card p{ margin:0; color:var(--ink-soft); font-size:0.94rem; }
+
+  /* contact */
+  .contact-card{
+    display:block;
+    padding:1.7rem 1.8rem;
+    background:var(--slate-dark);
+    color:#f2efe6;
+    border-radius:0.6rem;
+  }
+
+  .contact-card p{ margin:0.2rem 0 0; color:#cdd8e0; font-size:0.94rem; }
+  .contact-card a.button{ background:var(--brass); color:#241a0d; }
+  .contact-card a.button:hover{ background:#c19457; }
+
+  .contact-links{
+    margin-top:1rem;
+    display:flex; flex-wrap:wrap; gap:1.2rem;
+    font-size:0.92rem;
+  }
+
+  .contact-links a{ color:var(--ink); }
+
+  footer{
+    margin-top:2rem;
+    padding:2rem 0;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:0.88rem;
+    border-top:1px solid var(--line);
+  }
+
+  @media (max-width: 760px){
+    .hero{ grid-template-columns:1fr; padding-top:3rem; }
+    .projects{ grid-template-columns:1fr; }
+    .contact-card{ grid-template-columns:1fr; text-align:left; }
+    .activity-list li{ grid-template-columns:1fr; gap:0.2rem; }
+  }
+</style>
 </head>
 
 <body>
-  <header>
-    <div class="container">
-      <nav aria-label="Main navigation">
-        <a class="brand" href="#top">Gabriel Calvo Bayarri</a>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#research">Research</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li class="language-switcher" aria-label="Language">
-            <span aria-current="page">EN</span>
-            <span aria-hidden="true">|</span>
-            <a href="/es/" lang="es" hreflang="es">ES</a>
-          </li>
-        </ul>
-      </nav>
+<header>
+  <div class="container">
+    <nav aria-label="Main navigation">
+      <a class="brand" href="#top">Gabriel Calvo Bayarri</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="language-switcher" aria-label="Language">
+          <span aria-current="page">EN</span>
+          <span aria-hidden="true">|</span>
+          <a href="/es/" lang="es" hreflang="es">ES</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div id="top" class="container">
+
+  <section class="hero" aria-labelledby="page-title">
+    <div>
+      <p class="eyebrow">Statistician</p>
+      <h1 id="page-title">Gabriel Calvo Bayarri</h1>
+      <p class="subtitle">Universitat de València</p>
+      <p class="introduction">
+        I work on Bayesian hierarchical and longitudinal models — building
+        methodology for repeated-measures and time-dependent data, and hidden
+        Markov structures — with applications spanning sports analytics,
+        fisheries science and biomedicine. I completed my PhD jointly at the
+        Universitat de València and BioSS, and now teach statistics and
+        biostatistics at the Universitat de València.
+      </p>
+
+      <p class="introduction" style="margin-top:0.9rem;">
+        <a href="mailto:gabriel.calvo@uv.es" style="font-family:'IBM Plex Mono', monospace; font-size:0.92rem; color:var(--slate-dark);">gabriel.calvo@uv.es</a>
+      </p>
+
+      <div class="buttons">
+        <a class="button secondary" href="https://github.com/gcalvobayarri" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a class="button secondary" href="https://scholar.google.com/citations?user=3RSI4sgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      </div>
     </div>
-  </header>
 
-  <div id="top" class="container">
-    <section class="hero" aria-labelledby="page-title">
-      <img
-        class="portrait"
-        src="https://github.com/gcalvobayarri.png"
-        alt="Gabriel Calvo Bayarri"
-      >
+    <div class="signature" aria-hidden="true">
+      <svg viewBox="0 0 320 190" xmlns="http://www.w3.org/2000/svg">
+        <path class="prior-curve" d="M10,150 C60,150 70,40 130,40 C190,40 200,150 250,150 C280,150 300,150 310,150" />
+        <path class="posterior-fill" d="M120,150 C140,150 145,60 175,60 C205,60 210,150 230,150 Z" />
+        <path class="posterior-curve" d="M120,150 C140,150 145,60 175,60 C205,60 210,150 230,150" />
+        <line x1="10" y1="150" x2="310" y2="150" stroke="#c9c1aa" stroke-width="1"/>
+      </svg>
+      <p class="signature-caption">
+        <span>prior</span>
+        <span>→ evidence →</span>
+        <span>posterior</span>
+      </p>
+    </div>
+  </section>
 
-      <div>
-        <h1 id="page-title">Gabriel Calvo Bayarri</h1>
-        <p class="subtitle">Statistician · University of Valencia</p>
-        <p class="introduction">
-          I am a statistician working on Bayesian methods for longitudinal and
-          repeated-measures data, Bayesian networks, hierarchical modelling and
-          applications in medicine, biology and sports analytics.
-        </p>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        My PhD thesis, <em>Bayesian hierarchical modelling for repeated
+        measures and longitudinal data</em>, was supervised by Carmen Armero
+        (Universitat de València) and Luigi Spezia (Biomathematics &amp;
+        Statistics Scotland), and combined stays in Aberdeen and Valencia. It
+        developed hierarchical and hidden Markov approaches for data that
+        unfolds over time — work that now spans wheelchair basketball
+        line-ups, NBA shot sequences, Mediterranean sardine stocks and
+        surgical monitoring. I currently teach statistics and biostatistics
+        at the Universitat de València and remain an associate of BioSS.
+      </p>
+    </section>
 
-        <div class="buttons">
-          <a
-            class="button"
-            href="https://github.com/gcalvobayarri"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub profile
-          </a>
-          <a class="button secondary" href="#projects">View projects</a>
-        </div>
+    <section id="research">
+      <h2>Research interests</h2>
+      <ul class="research-list">
+        <li>Bayesian statistics</li>
+        <li>Longitudinal data</li>
+        <li>Hierarchical models</li>
+        <li>Hidden Markov models</li>
+        <li>Bayesian networks</li>
+        <li>Sports analytics</li>
+        <li>Biostatistics</li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Selected publications</h2>
+      <p class="section-lede">
+        First-author journal articles, all freely available through the links below.
+      </p>
+
+      <div class="publications">
+        <article class="pub-card">
+          <h3>
+            <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">
+              Selecting the Best Compositions of a Wheelchair Basketball Team: A Data-Driven Approach
+            </a>
+          </h3>
+          <p class="publication-meta">
+            <span>The American Statistician · 2025</span>
+            <span class="open-access-badge">Open access</span>
+          </p>
+          <p>
+            Combines a Bayesian longitudinal model with integer optimisation
+            to turn players' past performance into optimal wheelchair
+            basketball line-ups, bridging statistical inference and sporting
+            decisions.
+          </p>
+          <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </article>
+
+        <article class="pub-card">
+          <h3>
+            <a href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">
+              Can the Hot Hand Phenomenon Be Modelled? A Bayesian Hidden Markov Approach
+            </a>
+          </h3>
+          <p class="publication-meta">
+            <span>Computational Statistics · 2025</span>
+            <span class="open-access-badge">Open access</span>
+          </p>
+          <p>
+            A Bayesian hidden Markov model represents basketball shots
+            through latent hot and cold states, quantifying the strength of
+            team streaks probabilistically and moving the hot-hand debate
+            beyond simple runs of makes and misses.
+          </p>
+          <a class="publication-link" href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </article>
+
+        <article class="pub-card">
+          <h3>
+            <a href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">
+              Bayes Factors for Longitudinal Model Assessment via Power Posteriors
+            </a>
+          </h3>
+          <p class="publication-meta">
+            <span>Communications in Statistics – Simulation and Computation · 2026</span>
+            <span class="open-access-badge">Open access</span>
+          </p>
+          <p>
+            Extends power posteriors to compute Bayes factors for
+            longitudinal models with random effects, where marginal
+            likelihoods are especially demanding, assessed through simulation
+            studies and Mediterranean sardine data.
+          </p>
+          <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </article>
+
+        <article class="pub-card">
+          <h3>
+            <a href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">
+              Bayesian Joint Longitudinal Models for Assessing the Exploitation Rates of Sardine Stock in the Mediterranean Sea
+            </a>
+          </h3>
+          <p class="publication-meta">
+            <span>Stochastic Environmental Research and Risk Assessment · 2024</span>
+            <span class="open-access-badge">Open access</span>
+          </p>
+          <p>
+            Joint longitudinal models trace artisanal and industrial sardine
+            catches across Mediterranean countries from 1985 to 2018,
+            uncovering an overall decline alongside important differences
+            between countries and fishing sectors.
+          </p>
+          <a class="publication-link" href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </article>
+
+        <article class="pub-card">
+          <h3>
+            <a href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">
+              Bayesian Hierarchical Nonlinear Modelling of Intra-abdominal Volume During Pneumoperitoneum for Laparoscopic Surgery
+            </a>
+          </h3>
+          <p class="publication-meta">
+            <span>SORT · 2021</span>
+            <span class="open-access-badge">Open access</span>
+          </p>
+          <p>
+            Bayesian hierarchical nonlinear models describe how
+            intra-abdominal volume changes with insufflation pressure while
+            accounting for patient variability, helping identify a balance
+            between surgical working space and patient safety.
+          </p>
+          <a class="publication-link" href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">Read article →</a>
+        </article>
       </div>
     </section>
 
-    <main>
-      <section id="about">
-        <h2>About me</h2>
-        <p>
-          My research focuses on the development and application of Bayesian
-          statistical models, particularly for complex longitudinal and
-          multivariate data. I also teach statistics and bio-statistics at the
-          University of Valencia.
-        </p>
-      </section>
+    <section id="projects">
+      <h2>Selected projects</h2>
+      <div class="projects">
+        <article class="card">
+          <h3><a href="https://github.com/gcalvobayarri/hot_hand_model">Hot hand model</a></h3>
+          <p>R code for modelling hot-hand behaviour in basketball.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://github.com/gcalvobayarri/Longitudinal_BNs">Longitudinal Bayesian networks</a></h3>
+          <p>Methods and code for Bayesian networks with longitudinal data.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://github.com/gcalvobayarri/European_sardine_analysis">European sardine analysis</a></h3>
+          <p>Statistical analysis of longitudinal fisheries data.</p>
+        </article>
+        <article class="card">
+          <h3><a href="https://github.com/gcalvobayarri/Wheelchair_basketball_lineups">Wheelchair basketball line-ups</a></h3>
+          <p>Statistical methods applied to wheelchair basketball line-ups.</p>
+        </article>
+      </div>
+    </section>
 
-      <section id="research">
-        <h2>Research interests</h2>
-        <ul class="research-list">
-          <li>Bayesian statistics</li>
-          <li>Longitudinal data</li>
-          <li>Hierarchical models</li>
-          <li>Bayesian networks</li>
-          <li>Sports analytics</li>
-          <li>Biostatistics</li>
-        </ul>
-      </section>
-
-      <section id="publications">
-        <h2>Selected publications</h2>
-        <p>
-          A selection of my first-author journal articles. All are freely available
-          through the links below.
-        </p>
-
-        <div class="publications">
-          <article class="card">
-            <h3>
-              <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">
-                Selecting the Best Compositions of a Wheelchair Basketball Team: A Data-Driven Approach
-              </a>
-            </h3>
-            <p class="publication-meta">
-              <span><em>The American Statistician</em>, 2025</span>
-              <span class="open-access-badge">Open access</span>
-            </p>
-            <p>
-              This study combines a Bayesian longitudinal model with integer optimisation
-              to turn players’ past performance into optimal wheelchair basketball line-ups.
-              It provides a practical bridge between statistical inference and sporting decisions.
-            </p>
-            <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">Read article →</a>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">
-                Can the Hot Hand Phenomenon Be Modelled? A Bayesian Hidden Markov Approach
-              </a>
-            </h3>
-            <p class="publication-meta">
-              <span><em>Computational Statistics</em>, 2025</span>
-              <span class="open-access-badge">Open access</span>
-            </p>
-            <p>
-              A Bayesian hidden Markov model represents basketball shots through latent
-              hot and cold states and quantifies the strength of team streaks probabilistically.
-              Applications to NBA teams move the hot-hand debate beyond simple runs of makes and misses.
-            </p>
-            <a class="publication-link" href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">Read article →</a>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">
-                Bayes Factors for Longitudinal Model Assessment via Power Posteriors
-              </a>
-            </h3>
-            <p class="publication-meta">
-              <span><em>Communications in Statistics – Simulation and Computation</em>, 2026</span>
-              <span class="open-access-badge">Open access</span>
-            </p>
-            <p>
-              This work extends power posteriors to compute Bayes factors for longitudinal
-              models with random effects, where marginal likelihoods are especially demanding.
-              The approach is assessed through simulation studies and Mediterranean sardine data.
-            </p>
-            <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">Read article →</a>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">
-                Bayesian Joint Longitudinal Models for Assessing the Exploitation Rates of Sardine Stock in the Mediterranean Sea
-              </a>
-            </h3>
-            <p class="publication-meta">
-              <span><em>Stochastic Environmental Research and Risk Assessment</em>, 2024</span>
-              <span class="open-access-badge">Open access</span>
-            </p>
-            <p>
-              Joint longitudinal models trace artisanal and industrial sardine catches across
-              Mediterranean countries from 1985 to 2018. The analysis uncovers an overall decline
-              while revealing important differences between countries and fishing sectors.
-            </p>
-            <a class="publication-link" href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">Read article →</a>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">
-                Bayesian Hierarchical Nonlinear Modelling of Intra-abdominal Volume During Pneumoperitoneum for Laparoscopic Surgery
-              </a>
-            </h3>
-            <p class="publication-meta">
-              <span><em>SORT</em>, 2021</span>
-              <span class="open-access-badge">Open access</span>
-            </p>
-            <p>
-              Bayesian hierarchical nonlinear models describe how intra-abdominal volume
-              changes with insufflation pressure while accounting for patient variability.
-              The study helps identify a balance between surgical working space and patient safety.
-            </p>
-            <a class="publication-link" href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">Read article →</a>
-          </article>
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-card">
+        <div>
+          <p class="eyebrow" style="color:#a9c4d8;">Get in touch</p>
+          <p style="font-size:1.1rem; font-weight:600; margin-top:0.3rem;">
+            <a href="mailto:gabriel.calvo@uv.es" style="color:#f2efe6;">gabriel.calvo@uv.es</a>
+          </p>
+          <p>Department of Statistics and Operations Research · Universitat de València<br>
+          Carrer del Dr. Moliner, 50 · 46100 Burjassot, Valencia, Spain</p>
         </div>
-      </section>
+      </div>
+      <div class="contact-links">
+        <a href="https://github.com/gcalvobayarri" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://scholar.google.com/citations?user=3RSI4sgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/gabriel-calvo-bayarri-797377b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+</div>
 
-      <section id="projects">
-        <h2>Selected projects</h2>
-
-        <div class="projects">
-          <article class="card">
-            <h3>
-              <a href="https://github.com/gcalvobayarri/hot_hand_model">
-                Hot hand model
-              </a>
-            </h3>
-            <p>R code for modelling hot-hand behaviour in basketball.</p>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://github.com/gcalvobayarri/Longitudinal_BNs">
-                Longitudinal Bayesian networks
-              </a>
-            </h3>
-            <p>Methods and code for Bayesian networks with longitudinal data.</p>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://github.com/gcalvobayarri/European_sardine_analysis">
-                European sardine analysis
-              </a>
-            </h3>
-            <p>Statistical analysis of longitudinal fisheries data.</p>
-          </article>
-
-          <article class="card">
-            <h3>
-              <a href="https://github.com/gcalvobayarri/Wheelchair_basketball_lineups">
-                Wheelchair basketball line-ups
-              </a>
-            </h3>
-            <p>Statistical methods applied to wheelchair basketball line-ups.</p>
-          </article>
-        </div>
-      </section>
-    </main>
+<footer>
+  <div class="container">
+    <p>© 2026 Gabriel Calvo Bayarri · Hosted with GitHub Pages</p>
   </div>
-
-  <footer>
-    <div class="container">
-      <p>© 2026 Gabriel Calvo Bayarri · Hosted with GitHub Pages</p>
-    </div>
-  </footer>
+</footer>
 </body>
 </html>
