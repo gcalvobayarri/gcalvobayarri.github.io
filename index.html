@@ -189,6 +189,44 @@
       border-radius: 999px;
     }
 
+    .publications {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .publication-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin: 0 0 0.75rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .open-access-badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #e6f4ea;
+      color: #246b3c;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .publication-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .publication-link:hover {
+      text-decoration: underline;
+    }
+
     .projects {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -254,6 +292,7 @@
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#research">Research</a></li>
+          <li><a href="#publications">Publications</a></li>
           <li><a href="#projects">Projects</a></li>
           <li class="language-switcher" aria-label="Language">
             <span aria-current="page">EN</span>
@@ -317,6 +356,106 @@
           <li>Sports analytics</li>
           <li>Biostatistics</li>
         </ul>
+      </section>
+
+      <section id="publications">
+        <h2>Selected publications</h2>
+        <p>
+          A selection of my first-author journal articles. All are freely available
+          through the links below.
+        </p>
+
+        <div class="publications">
+          <article class="card">
+            <h3>
+              <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">
+                Selecting the Best Compositions of a Wheelchair Basketball Team: A Data-Driven Approach
+              </a>
+            </h3>
+            <p class="publication-meta">
+              <span><em>The American Statistician</em>, 2025</span>
+              <span class="open-access-badge">Open access</span>
+            </p>
+            <p>
+              This study combines a Bayesian longitudinal model with integer optimisation
+              to turn players’ past performance into optimal wheelchair basketball line-ups.
+              It provides a practical bridge between statistical inference and sporting decisions.
+            </p>
+            <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">Read article →</a>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">
+                Can the Hot Hand Phenomenon Be Modelled? A Bayesian Hidden Markov Approach
+              </a>
+            </h3>
+            <p class="publication-meta">
+              <span><em>Computational Statistics</em>, 2025</span>
+              <span class="open-access-badge">Open access</span>
+            </p>
+            <p>
+              A Bayesian hidden Markov model represents basketball shots through latent
+              hot and cold states and quantifies the strength of team streaks probabilistically.
+              Applications to NBA teams move the hot-hand debate beyond simple runs of makes and misses.
+            </p>
+            <a class="publication-link" href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">Read article →</a>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">
+                Bayes Factors for Longitudinal Model Assessment via Power Posteriors
+              </a>
+            </h3>
+            <p class="publication-meta">
+              <span><em>Communications in Statistics – Simulation and Computation</em>, 2026</span>
+              <span class="open-access-badge">Open access</span>
+            </p>
+            <p>
+              This work extends power posteriors to compute Bayes factors for longitudinal
+              models with random effects, where marginal likelihoods are especially demanding.
+              The approach is assessed through simulation studies and Mediterranean sardine data.
+            </p>
+            <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">Read article →</a>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">
+                Bayesian Joint Longitudinal Models for Assessing the Exploitation Rates of Sardine Stock in the Mediterranean Sea
+              </a>
+            </h3>
+            <p class="publication-meta">
+              <span><em>Stochastic Environmental Research and Risk Assessment</em>, 2024</span>
+              <span class="open-access-badge">Open access</span>
+            </p>
+            <p>
+              Joint longitudinal models trace artisanal and industrial sardine catches across
+              Mediterranean countries from 1985 to 2018. The analysis uncovers an overall decline
+              while revealing important differences between countries and fishing sectors.
+            </p>
+            <a class="publication-link" href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">Read article →</a>
+          </article>
+
+          <article class="card">
+            <h3>
+              <a href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">
+                Bayesian Hierarchical Nonlinear Modelling of Intra-abdominal Volume During Pneumoperitoneum for Laparoscopic Surgery
+              </a>
+            </h3>
+            <p class="publication-meta">
+              <span><em>SORT</em>, 2021</span>
+              <span class="open-access-badge">Open access</span>
+            </p>
+            <p>
+              Bayesian hierarchical nonlinear models describe how intra-abdominal volume
+              changes with insufflation pressure while accounting for patient variability.
+              The study helps identify a balance between surgical working space and patient safety.
+            </p>
+            <a class="publication-link" href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">Read article →</a>
+          </article>
+        </div>
       </section>
 
       <section id="projects">
