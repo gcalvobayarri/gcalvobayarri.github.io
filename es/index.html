@@ -203,6 +203,29 @@
 
   .button.secondary:hover{ background:var(--paper-soft); }
 
+
+  .hero-media{
+    display:grid;
+    gap:1rem;
+    min-width:0;
+  }
+
+  .profile-portrait{
+    overflow:hidden;
+    background:#fbfaf5;
+    border:1px solid var(--line);
+    border-radius:0.85rem;
+    box-shadow:0 14px 36px rgba(30,42,56,0.1);
+  }
+
+  .profile-portrait img{
+    display:block;
+    width:100%;
+    height:clamp(210px, 24vw, 250px);
+    object-fit:cover;
+    object-position:center top;
+  }
+
   /* Bayesian update: prior + data -> posterior */
   .signature{
     margin:0;
@@ -527,6 +550,11 @@
       </div>
     </div>
 
+    <div class="hero-media">
+      <div class="profile-portrait">
+        <img src="/ilustracion_perfil.jpeg" alt="Ilustración de Gabriel Calvo Bayarri" width="1086" height="1448">
+      </div>
+
     <figure class="signature">
       <div class="signature-heading">
         <strong>Aprendizaje bayesiano</strong>
@@ -558,6 +586,7 @@
         Los datos transforman la incertidumbre inicial en una distribución a posteriori más concentrada.
       </figcaption>
     </figure>
+    </div>
   </section>
 
   <main>
