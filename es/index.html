@@ -1198,6 +1198,65 @@
     .menu-toggle span,.menu-enhanced .nav-links.is-open{ transition:none; animation:none; }
   }
 
+  /* ---------- floating cards ---------- */
+  :root{
+    --card-shadow:0 12px 30px rgba(30,42,56,0.09),0 3px 9px rgba(30,42,56,0.045);
+    --card-shadow-hover:0 24px 52px rgba(30,42,56,0.14),0 6px 16px rgba(30,42,56,0.07);
+  }
+
+  .course-block{
+    box-shadow:0 24px 58px rgba(30,42,56,0.11),0 5px 14px rgba(30,42,56,0.05);
+  }
+
+  .teaching-panel,
+  .episode-card,
+  .pub-card,
+  .projects .card{
+    box-shadow:var(--card-shadow);
+  }
+
+  .teaching-panel,
+  .episode-card,
+  .pub-card,
+  .projects .card{
+    transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
+  }
+
+  @media (hover:hover) and (pointer:fine){
+    .teaching-panel:hover,
+    .episode-card:hover,
+    .pub-card:hover,
+    .projects .card:hover,
+    .teaching-panel:focus-within,
+    .episode-card:focus-within,
+    .pub-card:focus-within,
+    .projects .card:focus-within{
+      transform:translateY(-6px);
+      border-color:rgba(43,88,118,0.34);
+      box-shadow:var(--card-shadow-hover);
+    }
+  }
+
+  @media (max-width:760px){
+    .course-block{ box-shadow:0 16px 38px rgba(30,42,56,0.1); }
+
+    .teaching-panel,
+    .episode-card,
+    .pub-card,
+    .projects .card{
+      box-shadow:0 9px 22px rgba(30,42,56,0.085);
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .teaching-panel,
+    .episode-card,
+    .pub-card,
+    .projects .card{
+      transition:none;
+    }
+  }
+
 </style>
 </head>
 
