@@ -496,6 +496,50 @@
   .card h3 a:hover{ color:var(--slate-dark); }
   .card p{ margin:0; color:var(--ink-soft); font-size:0.94rem; }
 
+  /* podcast */
+  .teaching-card{ max-width:42rem; }
+
+  .podcast{
+    margin-top:1.2rem;
+    padding:1.15rem 1.25rem;
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:0.55rem;
+  }
+
+  .podcast-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+  }
+
+  .podcast .eyebrow{ margin:0; }
+
+  .podcast-duration{
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+  }
+
+  .podcast h4{
+    margin:0.3rem 0 0.25rem;
+    font-family:'Fraunces', Georgia, serif;
+    font-size:1.08rem;
+    color:var(--ink);
+  }
+
+  .podcast p{ margin:0; color:var(--ink-soft); font-size:0.9rem; }
+  .podcast audio{ display:block; width:100%; margin:0.9rem 0 0.55rem; }
+
+  .audio-download{
+    font-size:0.82rem;
+    font-weight:600;
+    text-decoration:none;
+  }
+
+  .audio-download:hover{ text-decoration:underline; }
+
   /* contact */
   .contact-card{
     display:block;
@@ -660,9 +704,23 @@
     <section id="teaching">
       <h2>Docencia</h2>
       <p class="section-lede">Materiales y recursos docentes.</p>
-      <article class="card">
+      <article class="card teaching-card">
         <h3>Experimentación Integrada en Biología</h3>
         <p>Estadística para estudiantes de tercer curso del Grado en Biología de la Universitat de València.</p>
+
+        <div class="podcast">
+          <div class="podcast-top">
+            <p class="eyebrow">Podcast · Episodio 1</p>
+            <span class="podcast-duration">6 min 24 s</span>
+          </div>
+          <h4>El modelo lineal</h4>
+          <p>Introducción en audio al capítulo dedicado al modelo lineal.</p>
+          <audio controls preload="metadata" aria-label="Podcast: El modelo lineal">
+            <source src="/audio/capitulo_modelo_lineal_es.m4a" type="audio/mp4">
+            Tu navegador no permite reproducir este audio.
+          </audio>
+          <a class="audio-download" href="/audio/capitulo_modelo_lineal_es.m4a" download>Descargar audio (.m4a)</a>
+        </div>
       </article>
     </section>
 
