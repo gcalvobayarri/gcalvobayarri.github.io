@@ -22,7 +22,7 @@
     --slate-dark: #1c3a52;
     --brass:      #a97d3f;
     --line:       #d8d0bd;
-    --max: 880px;
+    --max: 1080px;
   }
 
   *{ box-sizing:border-box; }
@@ -587,6 +587,315 @@
     .contact-card{ grid-template-columns:1fr; text-align:left; }
     .activity-list li{ grid-template-columns:1fr; gap:0.2rem; }
   }
+
+  /* ---------- fluid editorial layout ---------- */
+  body{ overflow-x:hidden; }
+
+  header{
+    top:0.7rem;
+    padding:0 0.45rem;
+    background:transparent;
+    backdrop-filter:none;
+    border-bottom:0;
+    box-shadow:none;
+  }
+
+  header .container{
+    width:min(94%, 1120px);
+    padding:0 1rem;
+    background:rgba(251,250,245,0.91);
+    border:1px solid rgba(216,208,189,0.82);
+    border-radius:1rem;
+    box-shadow:0 14px 36px rgba(30,42,56,0.12);
+    backdrop-filter:blur(18px);
+  }
+
+  .brand{ color:var(--ink); }
+  .brand-mark{ background:var(--slate-dark); color:#f7f5ee; }
+  .brand-role{ color:var(--slate); }
+  .nav-links a{ color:var(--ink-soft); }
+  .nav-links a:hover{ color:var(--slate-dark); }
+  .language-switcher{ border-color:var(--line); }
+  .language-switcher [aria-current="page"]{ color:var(--ink); }
+  .language-switcher a{ color:var(--ink-soft); }
+
+  .hero{
+    gap:4.5rem;
+    padding:5.4rem 0 5rem;
+  }
+
+  .hero::before{
+    inset:1.15rem -3.3rem 0.65rem;
+    border-radius:2rem;
+    background:
+      radial-gradient(circle at 82% 20%, rgba(169,125,63,0.17), transparent 20rem),
+      linear-gradient(135deg, rgba(251,250,245,0.92), rgba(233,228,214,0.32));
+  }
+
+  main section{
+    padding:4.8rem 0;
+    scroll-margin-top:6.5rem;
+  }
+
+  .card,.pub-card,.signature,.profile-portrait{
+    transition:transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  }
+
+  .card:hover,.pub-card:hover{
+    transform:translateY(-4px);
+    border-color:rgba(43,88,118,0.35);
+    box-shadow:0 18px 38px rgba(30,42,56,0.09);
+  }
+
+  .teaching-section{ position:relative; }
+
+  .teaching-intro{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:2rem;
+    margin-bottom:1.6rem;
+  }
+
+  .teaching-intro h2{ margin-bottom:0.65rem; }
+  .teaching-intro .section-lede{ margin:0; }
+
+  .course-badge{
+    flex-shrink:0;
+    display:inline-flex;
+    align-items:center;
+    gap:0.5rem;
+    padding:0.6rem 0.85rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    background:rgba(251,250,245,0.78);
+    color:var(--slate-dark);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.04em;
+  }
+
+  .course-badge::before{
+    content:"";
+    width:0.45rem;
+    height:0.45rem;
+    border-radius:50%;
+    background:var(--brass);
+  }
+
+  .teaching-layout{
+    display:grid;
+    grid-template-columns:minmax(0,1.45fr) minmax(260px,0.55fr);
+    gap:1.15rem;
+    align-items:stretch;
+  }
+
+  .teaching-panel{
+    padding:1.45rem;
+    border:1px solid var(--line);
+    border-radius:1.25rem;
+    background:rgba(251,250,245,0.86);
+    box-shadow:0 18px 45px rgba(30,42,56,0.07);
+  }
+
+  .panel-heading{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:1.15rem;
+  }
+
+  .panel-heading .eyebrow{ margin:0 0 0.18rem; }
+
+  .panel-heading h3{
+    margin:0;
+    font-size:1.45rem;
+  }
+
+  .panel-count{
+    padding:0.3rem 0.55rem;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.67rem;
+    white-space:nowrap;
+  }
+
+  .episode-list{ display:grid; gap:0.8rem; }
+
+  .episode-card{
+    position:relative;
+    padding:1.15rem 1.2rem;
+    overflow:hidden;
+    border:1px solid rgba(216,208,189,0.88);
+    border-radius:0.9rem;
+    background:#fffef9;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .episode-card::before{
+    content:"";
+    position:absolute;
+    inset:0 auto 0 0;
+    width:3px;
+    background:linear-gradient(180deg,var(--brass),var(--slate));
+  }
+
+  .episode-card:hover{
+    transform:translateY(-3px);
+    border-color:rgba(43,88,118,0.35);
+    box-shadow:0 14px 28px rgba(30,42,56,0.09);
+  }
+
+  .episode-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:0.45rem;
+  }
+
+  .episode-number{
+    color:var(--slate);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+  }
+
+  .episode-duration{
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+  }
+
+  .episode-card h4{
+    margin:0 0 0.28rem;
+    color:var(--ink);
+    font-family:'Fraunces',Georgia,serif;
+    font-size:1.16rem;
+  }
+
+  .episode-card p{
+    margin:0;
+    color:var(--ink-soft);
+    font-size:0.88rem;
+  }
+
+  .episode-card audio{
+    display:block;
+    width:100%;
+    height:2.55rem;
+    margin:0.85rem 0 0.5rem;
+  }
+
+  .episode-footer{
+    display:flex;
+    justify-content:flex-end;
+  }
+
+  .audio-download{
+    display:inline-flex;
+    align-items:center;
+    gap:0.35rem;
+    font-size:0.78rem;
+  }
+
+  .audio-download::after{ content:"↓"; }
+
+  .materials-panel{
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
+    color:#f6f2e9;
+    background:
+      radial-gradient(circle at 90% 10%,rgba(169,125,63,0.38),transparent 13rem),
+      linear-gradient(155deg,var(--slate-dark),#132a3d);
+    border-color:rgba(28,58,82,0.35);
+  }
+
+  .materials-panel .eyebrow{ color:#a9c4d8; }
+  .materials-panel .panel-heading h3{ color:#fff; }
+  .materials-panel .panel-count{
+    color:#d7e0e7;
+    border-color:rgba(255,255,255,0.2);
+  }
+
+  .materials-empty{
+    display:flex;
+    flex:1;
+    flex-direction:column;
+    justify-content:flex-end;
+    min-height:17rem;
+    padding-top:3rem;
+  }
+
+  .materials-symbol{
+    display:grid;
+    place-items:center;
+    width:3rem;
+    height:3rem;
+    margin-bottom:auto;
+    border:1px solid rgba(255,255,255,0.28);
+    border-radius:50%;
+    color:#fff;
+    font-size:1.2rem;
+  }
+
+  .materials-empty h4{
+    margin:1.2rem 0 0.4rem;
+    color:#fff;
+    font-family:'Fraunces',Georgia,serif;
+    font-size:1.2rem;
+  }
+
+  .materials-empty p{
+    margin:0;
+    color:#cdd8e0;
+    font-size:0.88rem;
+  }
+
+  @keyframes hero-rise{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .hero > div:first-child{ animation:hero-rise 0.72s ease both; }
+  .hero-media{ animation:hero-rise 0.72s 0.12s ease both; }
+
+  @supports (animation-timeline:view()){
+    main > section{
+      animation:section-rise linear both;
+      animation-timeline:view();
+      animation-range:entry 4% cover 24%;
+    }
+    @keyframes section-rise{
+      from{ opacity:0.35; transform:translateY(24px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+  }
+
+  @media (max-width:760px){
+    header{ position:static; top:auto; padding:0.45rem 0.25rem 0; }
+    header .container{ width:96%; padding:0.35rem 0.75rem; border-radius:0.85rem; }
+    .hero{ gap:2.4rem; padding:3.2rem 0 3rem; }
+    .hero::before{ inset:0.4rem -0.55rem 0.2rem; border-radius:1.2rem; }
+    main section{ padding:3.6rem 0; scroll-margin-top:1rem; }
+    .teaching-intro{ display:block; }
+    .course-badge{ margin-top:1rem; }
+    .teaching-layout{ grid-template-columns:1fr; }
+    .teaching-panel{ padding:1.05rem; border-radius:1rem; }
+    .panel-heading{ align-items:center; }
+    .materials-empty{ min-height:13rem; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .hero > div:first-child,.hero-media,main > section{ animation:none !important; transform:none !important; }
+    .card,.pub-card,.episode-card{ transition:none; }
+  }
+
 </style>
 </head>
 
@@ -701,41 +1010,76 @@
       </p>
     </section>
 
-    <section id="teaching">
-      <h2>Docencia</h2>
-      <p class="section-lede">Materiales y recursos docentes.</p>
-      <article class="card teaching-card">
-        <h3>Experimentación Integrada en Biología</h3>
-        <p>Estadística para estudiantes de tercer curso del Grado en Biología de la Universitat de València.</p>
+    <section id="teaching" class="teaching-section">
+      <div class="teaching-intro">
+        <div>
+          <p class="eyebrow">Experimentación Integrada en Biología</p>
+          <h2>Docencia</h2>
+          <p class="section-lede">Estadística para estudiantes de tercer curso del Grado en Biología de la Universitat de València.</p>
+        </div>
+        <span class="course-badge">3.º de Biología · EIB</span>
+      </div>
 
-        <div class="podcast">
-          <div class="podcast-top">
-            <p class="eyebrow">Pódcast</p>
-            <span class="podcast-duration">6 min 24 s</span>
+      <div class="teaching-layout">
+        <div class="teaching-panel" role="region" aria-labelledby="podcast-title-es">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Escuchar</p>
+              <h3 id="podcast-title-es">Pódcast</h3>
+            </div>
+            <span class="panel-count">2 capítulos</span>
           </div>
-          <h4>Capítulo 1: Regresión lineal múltiple</h4>
-          <p>Introducción en audio al capítulo 1 sobre regresión lineal múltiple.</p>
-          <audio controls preload="metadata" aria-label="Pódcast: Capítulo 1, Regresión lineal múltiple">
-            <source src="/audio/capitulo_modelo_lineal_es.m4a" type="audio/mp4">
-            Tu navegador no permite reproducir este audio.
-          </audio>
-          <a class="audio-download" href="/audio/capitulo_modelo_lineal_es.m4a" download>Descargar audio (.m4a)</a>
+
+          <div class="episode-list">
+            <article class="episode-card">
+              <div class="episode-top">
+                <span class="episode-number">Capítulo 01</span>
+                <span class="episode-duration">6 min 24 s</span>
+              </div>
+              <h4>Regresión lineal múltiple</h4>
+              <p>Introducción en audio a la regresión lineal múltiple.</p>
+              <audio controls preload="metadata" aria-label="Pódcast: Capítulo 1, Regresión lineal múltiple">
+                <source src="/audio/capitulo_modelo_lineal_es.m4a" type="audio/mp4">
+                Tu navegador no permite reproducir este audio.
+              </audio>
+              <div class="episode-footer">
+                <a class="audio-download" href="/audio/capitulo_modelo_lineal_es.m4a" download>Descargar audio</a>
+              </div>
+            </article>
+
+            <article class="episode-card">
+              <div class="episode-top">
+                <span class="episode-number">Capítulo 02</span>
+                <span class="episode-duration">5 min 44 s</span>
+              </div>
+              <h4>ANOVA</h4>
+              <p>Introducción en audio al análisis de la varianza.</p>
+              <audio controls preload="metadata" aria-label="Pódcast: Capítulo 2, ANOVA">
+                <source src="/audio/capitulo2_anova_es.m4a" type="audio/mp4">
+                Tu navegador no permite reproducir este audio.
+              </audio>
+              <div class="episode-footer">
+                <a class="audio-download" href="/audio/capitulo2_anova_es.m4a" download>Descargar audio</a>
+              </div>
+            </article>
+          </div>
         </div>
 
-        <div class="podcast">
-          <div class="podcast-top">
-            <p class="eyebrow">Pódcast</p>
-            <span class="podcast-duration">5 min 44 s</span>
+        <div class="teaching-panel materials-panel" role="region" aria-labelledby="materials-title-es">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Leer y descargar</p>
+              <h3 id="materials-title-es">Apuntes y recursos</h3>
+            </div>
+            <span class="panel-count">Próximamente</span>
           </div>
-          <h4>Capítulo 2: ANOVA</h4>
-          <p>Introducción en audio al capítulo 2 dedicado al análisis de la varianza (ANOVA).</p>
-          <audio controls preload="metadata" aria-label="Pódcast: Capítulo 2, ANOVA">
-            <source src="/audio/capitulo2_anova_es.m4a" type="audio/mp4">
-            Tu navegador no permite reproducir este audio.
-          </audio>
-          <a class="audio-download" href="/audio/capitulo2_anova_es.m4a" download>Descargar audio (.m4a)</a>
+          <div class="materials-empty">
+            <span class="materials-symbol" aria-hidden="true">↗</span>
+            <h4>Espacio preparado para nuevo material</h4>
+            <p>Aquí aparecerán los apuntes, archivos descargables y enlaces útiles cuando estén disponibles.</p>
+          </div>
         </div>
-      </article>
+      </div>
     </section>
 
     <section id="research">
