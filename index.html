@@ -10,7 +10,7 @@
 <link rel="alternate" hreflang="x-default" href="https://gcalvobayarri.github.io/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -36,7 +36,7 @@
 
   body{
     margin:0;
-    font-family:'Inter', Arial, Helvetica, sans-serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     color:var(--ink);
     background:
       radial-gradient(circle at 86% 7%, rgba(169,125,63,0.11), transparent 24rem),
@@ -62,7 +62,7 @@
   }
 
   h1,h2,h3{
-    font-family:'Fraunces', Georgia, serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight:600;
     color:var(--ink);
     letter-spacing:-0.01em;
@@ -112,7 +112,7 @@
   .brand-copy{ display:grid; line-height:1.12; }
 
   .brand-name{
-    font-family:'Fraunces', serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:1.03rem;
     font-weight:600;
     letter-spacing:0.01em;
@@ -281,7 +281,7 @@
   }
 
   .signature-heading strong{
-    font-family:'Fraunces', serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:1rem;
     font-weight:600;
   }
@@ -315,7 +315,7 @@
   }
   .signature .plot-label{
     fill:var(--ink);
-    font-family:'Fraunces', serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:15px;
     font-weight:600;
   }
@@ -524,7 +524,7 @@
 
   .podcast h4{
     margin:0.3rem 0 0.25rem;
-    font-family:'Fraunces', Georgia, serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:1.08rem;
     color:var(--ink);
   }
@@ -774,7 +774,7 @@
   .episode-card h4{
     margin:0 0 0.28rem;
     color:var(--ink);
-    font-family:'Fraunces',Georgia,serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:1.16rem;
   }
 
@@ -847,7 +847,7 @@
   .materials-empty h4{
     margin:1.2rem 0 0.4rem;
     color:#fff;
-    font-family:'Fraunces',Georgia,serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size:1.2rem;
   }
 
@@ -1074,6 +1074,130 @@
     .pub-card:first-child{ grid-column:auto; }
   }
 
+
+  /* ---------- Helvetica Neue and mobile navigation ---------- */
+  button,input,select,textarea{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+  h1,h2,h3,h4,.brand-name,.signature-heading strong,
+  .signature .plot-label,.episode-card h4,.materials-empty h4{
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+
+  h1,h2,h3,h4{ letter-spacing:-0.025em; }
+  h1{ font-weight:600; }
+  h2,h3,h4{ font-weight:600; }
+
+  .menu-toggle{
+    display:none;
+    width:2.7rem;
+    height:2.7rem;
+    padding:0.68rem 0.62rem;
+    flex-direction:column;
+    justify-content:space-between;
+    border:1px solid var(--line);
+    border-radius:0.72rem;
+    background:rgba(255,254,249,0.78);
+    color:var(--ink);
+    cursor:pointer;
+  }
+
+  .menu-toggle span{
+    display:block;
+    width:100%;
+    height:2px;
+    border-radius:999px;
+    background:currentColor;
+    transform-origin:center;
+    transition:transform 0.2s ease,opacity 0.2s ease;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){
+    transform:translateY(0.55rem) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){
+    opacity:0;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){
+    transform:translateY(-0.55rem) rotate(-45deg);
+  }
+
+  @keyframes menu-drop{
+    from{ opacity:0; transform:translateY(-0.45rem); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  @media (max-width:760px){
+    nav{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) auto;
+      align-items:center;
+      gap:0.35rem 0.7rem;
+      padding:0.38rem 0;
+    }
+
+    .menu-toggle{ display:flex; }
+
+    .nav-links{
+      grid-column:1/-1;
+      width:100%;
+      flex-direction:column;
+      align-items:stretch;
+      justify-content:flex-start;
+      gap:0;
+      margin:0;
+      padding:0.25rem 0 0.45rem;
+      font-size:0.9rem;
+    }
+
+    .menu-enhanced .nav-links{ display:none; }
+
+    .menu-enhanced .nav-links.is-open{
+      display:flex;
+      animation:menu-drop 0.2s ease both;
+    }
+
+    .nav-links li{ width:100%; }
+
+    .nav-links a{
+      display:block;
+      width:100%;
+      padding:0.72rem 0.2rem;
+      border-bottom:1px solid rgba(216,208,189,0.72);
+    }
+
+    .nav-links a:hover{
+      border-color:var(--brass);
+      background:rgba(233,228,214,0.42);
+    }
+
+    .language-switcher{
+      width:max-content;
+      margin:0.55rem auto 0;
+      padding:0.38rem 0.68rem;
+      border:1px solid var(--line);
+    }
+
+    .language-switcher a{
+      display:inline;
+      width:auto;
+      padding:0;
+      border:0;
+    }
+
+    .brand-role{
+      display:block;
+      font-size:0.54rem;
+    }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .menu-toggle span,.menu-enhanced .nav-links.is-open{ transition:none; animation:none; }
+  }
+
 </style>
 </head>
 
@@ -1088,7 +1212,12 @@
           <span class="brand-role">Bayesian statistician</span>
         </span>
       </a>
-      <ul class="nav-links">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open menu" data-open-label="Open menu" data-close-label="Close menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="primary-navigation">
         <li><a href="#about">About</a></li>
         <li><a href="#teaching">Teaching</a></li>
         <li><a href="#research">Research</a></li>
@@ -1432,5 +1561,54 @@
     <p>© 2026 Gabriel Calvo Bayarri · Hosted with GitHub Pages</p>
   </div>
 </footer>
+
+<script>
+  (() => {
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.getElementById('primary-navigation');
+    const nav = toggle && toggle.closest('nav');
+
+    if (!toggle || !menu || !nav) return;
+
+    nav.classList.add('menu-enhanced');
+
+    const setOpen = (open) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
+      menu.classList.toggle('is-open', open);
+    };
+
+    toggle.addEventListener('click', () => {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setOpen(false));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target) && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+      }
+    });
+
+    const desktop = window.matchMedia('(min-width: 761px)');
+    const closeOnDesktop = (event) => {
+      if (event.matches) setOpen(false);
+    };
+
+    if (typeof desktop.addEventListener === 'function') {
+      desktop.addEventListener('change', closeOnDesktop);
+    }
+  })();
+</script>
+
 </body>
 </html>
