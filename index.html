@@ -496,6 +496,50 @@
   .card h3 a:hover{ color:var(--slate-dark); }
   .card p{ margin:0; color:var(--ink-soft); font-size:0.94rem; }
 
+  /* podcast */
+  .teaching-card{ max-width:42rem; }
+
+  .podcast{
+    margin-top:1.2rem;
+    padding:1.15rem 1.25rem;
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:0.55rem;
+  }
+
+  .podcast-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+  }
+
+  .podcast .eyebrow{ margin:0; }
+
+  .podcast-duration{
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+  }
+
+  .podcast h4{
+    margin:0.3rem 0 0.25rem;
+    font-family:'Fraunces', Georgia, serif;
+    font-size:1.08rem;
+    color:var(--ink);
+  }
+
+  .podcast p{ margin:0; color:var(--ink-soft); font-size:0.9rem; }
+  .podcast audio{ display:block; width:100%; margin:0.9rem 0 0.55rem; }
+
+  .audio-download{
+    font-size:0.82rem;
+    font-weight:600;
+    text-decoration:none;
+  }
+
+  .audio-download:hover{ text-decoration:underline; }
+
   /* contact */
   .contact-card{
     display:block;
@@ -659,9 +703,23 @@
     <section id="teaching">
       <h2>Teaching</h2>
       <p class="section-lede">Course materials and teaching resources.</p>
-      <article class="card">
+      <article class="card teaching-card">
         <h3>Integrated Experimentation in Biology</h3>
         <p>Statistics for third-year Biology students at the Universitat de València.</p>
+
+        <div class="podcast">
+          <div class="podcast-top">
+            <p class="eyebrow">Podcast</p>
+            <span class="podcast-duration">5 min 20 s</span>
+          </div>
+          <h4>Chapter 1: Multiple Linear Regression</h4>
+          <p>Audio introduction to Chapter 1 on multiple linear regression.</p>
+          <audio controls preload="metadata" aria-label="Podcast: Chapter 1, Multiple Linear Regression">
+            <source src="/audio/capitulo_modelo_lineal_en.m4a" type="audio/mp4">
+            Your browser does not support audio playback.
+          </audio>
+          <a class="audio-download" href="/audio/capitulo_modelo_lineal_en.m4a" download>Download audio (.m4a)</a>
+        </div>
       </article>
     </section>
 
