@@ -1257,6 +1257,34 @@
     }
   }
 
+  /* ---------- persistent mobile header ---------- */
+  @media (max-width:760px){
+    body{ padding-top:4.35rem; }
+
+    header{
+      position:fixed;
+      inset:0 0 auto;
+      z-index:100;
+      width:100%;
+      padding:0.45rem 0.25rem 0;
+    }
+
+    header .container{
+      background:rgba(251,250,245,0.95);
+      box-shadow:0 12px 30px rgba(30,42,56,0.16);
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+
+    .menu-enhanced .nav-links.is-open{
+      max-height:calc(100dvh - 5rem);
+      overflow-y:auto;
+      overscroll-behavior:contain;
+    }
+
+    main section{ scroll-margin-top:5.4rem; }
+  }
+
 </style>
 </head>
 
