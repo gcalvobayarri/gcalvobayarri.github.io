@@ -8,1345 +8,13 @@
 <link rel="alternate" hreflang="en" href="https://gcalvobayarri.github.io/">
 <link rel="alternate" hreflang="es" href="https://gcalvobayarri.github.io/es/">
 <link rel="alternate" hreflang="x-default" href="https://gcalvobayarri.github.io/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --paper:      #f2efe6;
-    --paper-soft: #e9e4d6;
-    --ink:        #1e2a38;
-    --ink-soft:   #4a5568;
-    --slate:      #2b5876;
-    --slate-dark: #1c3a52;
-    --brass:      #a97d3f;
-    --line:       #d8d0bd;
-    --max: 1080px;
-  }
-
-  *{ box-sizing:border-box; }
-
-  html{ scroll-behavior:smooth; }
-
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
-  }
-
-  body{
-    margin:0;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    color:var(--ink);
-    background:
-      radial-gradient(circle at 86% 7%, rgba(169,125,63,0.11), transparent 24rem),
-      linear-gradient(180deg, #f7f4ed 0%, var(--paper) 32rem);
-    line-height:1.65;
-  }
-
-  .container{ width:min(92%, var(--max)); margin:0 auto; }
-
-  a{ color:var(--slate-dark); }
-
-  a:focus-visible, button:focus-visible{
-    outline:3px solid var(--brass);
-    outline-offset:3px;
-  }
-
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--slate);
-  }
-
-  h1,h2,h3{
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight:600;
-    color:var(--ink);
-    letter-spacing:-0.01em;
-  }
-
-  /* ---------- header ---------- */
-  header{
-    position:sticky; top:0; z-index:20;
-    background:rgba(28,58,82,0.97);
-    backdrop-filter:blur(10px);
-    border-bottom:3px solid var(--brass);
-    box-shadow:0 6px 22px rgba(30,42,56,0.14);
-  }
-
-  header .container{ width:min(94%, 1120px); }
-
-  nav{
-    display:flex; justify-content:space-between; align-items:center;
-    gap:1.5rem; padding:0.78rem 0;
-  }
-
-  .brand{
-    display:inline-flex;
-    align-items:center;
-    gap:0.72rem;
-    color:#f7f5ee;
-    text-decoration:none;
-    flex-shrink:0;
-  }
-
-  .brand-mark{
-    display:grid;
-    place-items:center;
-    width:2.45rem;
-    height:2.45rem;
-    border:1px solid rgba(255,255,255,0.32);
-    border-radius:50%;
-    background:var(--brass);
-    color:#241a0d;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    font-weight:600;
-    letter-spacing:-0.04em;
-    box-shadow:inset 0 0 0 4px rgba(255,255,255,0.1);
-  }
-
-  .brand-copy{ display:grid; line-height:1.12; }
-
-  .brand-name{
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:1.03rem;
-    font-weight:600;
-    letter-spacing:0.01em;
-  }
-
-  .brand-role{
-    margin-top:0.18rem;
-    color:#b9cbd8;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.61rem;
-    letter-spacing:0.09em;
-    text-transform:uppercase;
-  }
-
-  .nav-links{
-    display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end;
-    gap:1.05rem; margin:0; padding:0; list-style:none;
-    font-size:0.86rem;
-  }
-
-  .nav-links a{
-    color:#d7e0e7;
-    text-decoration:none;
-    padding:0.34rem 0;
-    border-bottom:2px solid transparent;
-    transition:color 0.15s ease, border-color 0.15s ease;
-  }
-
-  .nav-links a:hover{ color:#fff; border-color:var(--brass); }
-
-  .language-switcher{
-    display:flex; align-items:center; gap:0.38rem;
-    padding:0.28rem 0.55rem;
-    margin-left:0.15rem;
-    border:1px solid rgba(255,255,255,0.2);
-    border-radius:999px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-  }
-
-  .language-switcher [aria-current="page"]{ color:#fff; font-weight:600; }
-  .language-switcher a{ color:#b9cbd8; text-decoration:none; border:0; padding:0; }
-  .language-switcher a:hover{ color:#fff; border:0; }
-
-  /* ---------- hero ---------- */
-  .hero{
-    position:relative;
-    isolation:isolate;
-    display:grid;
-    grid-template-columns:minmax(0, 1.2fr) minmax(280px, 0.8fr);
-    align-items:center;
-    gap:3.5rem;
-    padding:4.75rem 0 4rem;
-  }
-
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset:1.45rem -2rem 1.15rem;
-    z-index:-1;
-    border:1px solid rgba(216,208,189,0.72);
-    border-radius:1.5rem;
-    background:linear-gradient(135deg, rgba(251,250,245,0.78), rgba(233,228,214,0.28));
-    box-shadow:0 20px 55px rgba(30,42,56,0.055);
-  }
-
-  .hero h1{
-    margin:0 0 0.4rem;
-    font-size:clamp(2.4rem, 5.4vw, 3.6rem);
-    line-height:1.05;
-  }
-
-  .subtitle{
-    margin:0 0 1.2rem;
-    font-size:1.08rem;
-    color:var(--slate-dark);
-    font-weight:600;
-  }
-
-  .introduction{ max-width:52ch; color:var(--ink-soft); font-size:1.03rem; }
-
-  .buttons{ display:flex; flex-wrap:wrap; gap:0.7rem; margin-top:1.6rem; }
-
-  .button{
-    display:inline-flex; align-items:center; gap:0.4rem;
-    padding:0.68rem 1.05rem;
-    border-radius:0.35rem;
-    background:var(--slate-dark);
-    color:#f7f5ee;
-    text-decoration:none;
-    font-weight:600;
-    font-size:0.92rem;
-    transition:background 0.15s ease;
-  }
-
-  .button:hover{ background:var(--ink); }
-
-  .button.secondary{
-    background:transparent;
-    color:var(--ink);
-    border:1px solid var(--ink);
-  }
-
-  .button.secondary:hover{ background:var(--paper-soft); }
-
-
-  .hero-media{
-    display:grid;
-    gap:1.2rem;
-    min-width:0;
-    justify-items:stretch;
-  }
-
-  .profile-portrait{
-    position:relative;
-    justify-self:center;
-    width:min(100%, 235px);
-    padding:0.95rem 0.85rem 0.7rem;
-    overflow:hidden;
-    background:linear-gradient(145deg, #ddd4c1 0%, #f1ece1 58%, #e4dbc8 100%);
-    border:1px solid rgba(169,125,63,0.32);
-    border-radius:1.15rem 1.15rem 0.72rem 0.72rem;
-    box-shadow:0 14px 32px rgba(30,42,56,0.11);
-  }
-
-  .profile-portrait::before{
-    content:"";
-    position:absolute;
-    top:0.48rem;
-    left:50%;
-    width:3.2rem;
-    height:3px;
-    transform:translateX(-50%);
-    border-radius:999px;
-    background:var(--brass);
-    opacity:0.72;
-  }
-
-  .profile-portrait img{
-    display:block;
-    width:100%;
-    height:auto;
-    border-radius:0.48rem;
-    mix-blend-mode:multiply;
-    filter:contrast(1.035) saturate(0.94);
-  }
-
-  /* Bayesian update: prior + data -> posterior */
-  .signature{
-    margin:0;
-    overflow:hidden;
-    background:#fbfaf5;
-    border:1px solid var(--line);
-    border-radius:0.85rem;
-    box-shadow:0 12px 30px rgba(30,42,56,0.08);
-  }
-
-  .signature-heading{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1rem;
-    padding:0.85rem 1rem;
-    background:var(--slate-dark);
-    color:#f7f5ee;
-  }
-
-  .signature-heading strong{
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:1rem;
-    font-weight:600;
-  }
-
-  .signature-heading span{
-    color:#b9cbd8;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.62rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-  }
-
-  .signature svg{ width:100%; height:auto; display:block; }
-
-  .signature .panel{ fill:var(--paper-soft); }
-  .signature .baseline{ stroke:#c9c1aa; stroke-width:1; }
-  .signature .prior-fill{ fill:var(--brass); opacity:0.16; }
-  .signature .prior-curve{
-    stroke:var(--brass);
-    stroke-width:3;
-    stroke-linecap:round;
-    fill:none;
-    stroke-dasharray:5 5;
-  }
-  .signature .posterior-fill{ fill:var(--slate); opacity:0.18; }
-  .signature .posterior-curve{
-    stroke:var(--slate-dark);
-    stroke-width:3;
-    stroke-linecap:round;
-    fill:none;
-  }
-  .signature .plot-label{
-    fill:var(--ink);
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:15px;
-    font-weight:600;
-  }
-  .signature .plot-note{
-    fill:var(--ink-soft);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:8px;
-    letter-spacing:0.04em;
-  }
-  .signature .update-circle{ fill:var(--slate-dark); }
-  .signature .update-symbol{
-    fill:#fff;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    font-weight:500;
-    text-anchor:middle;
-  }
-
-  .signature-caption{
-    margin:0;
-    padding:0.72rem 1rem 0.82rem;
-    border-top:1px solid var(--line);
-    color:var(--ink-soft);
-    font-size:0.78rem;
-    line-height:1.45;
-  }
-
-  .legend{
-    display:inline-flex;
-    align-items:center;
-    gap:0.35rem;
-    margin-right:0.8rem;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.67rem;
-    color:var(--ink);
-    white-space:nowrap;
-  }
-
-  .legend::before{
-    content:"";
-    width:1.25rem;
-    border-top:3px solid var(--slate-dark);
-  }
-
-  .legend.prior::before{
-    border-color:var(--brass);
-    border-top-style:dashed;
-  }
-
-  /* ---------- sections ---------- */
-  main section{ padding:3rem 0; border-top:1px solid var(--line); }
-  main section:first-child{ border-top:none; }
-
-  h2{
-    display:flex;
-    align-items:center;
-    gap:0.75rem;
-    margin:0 0 1.1rem;
-    font-size:1.55rem;
-  }
-
-  h2::after{
-    content:"";
-    width:4.5rem;
-    height:1px;
-    background:linear-gradient(90deg, var(--brass), transparent);
-  }
-
-  .section-lede{ margin:-0.5rem 0 1.4rem; color:var(--ink-soft); max-width:62ch; }
-
-  /* research tags */
-  .research-list{
-    display:flex; flex-wrap:wrap; gap:0.6rem;
-    padding:0; margin:0; list-style:none;
-  }
-
-  .research-list li{
-    display:flex; align-items:center; gap:0.5rem;
-    padding:0.5rem 0.9rem;
-    background:var(--paper-soft);
-    border:1px solid var(--line);
-    border-radius:999px;
-    font-size:0.9rem;
-  }
-
-  .research-list li::before{
-    content:"";
-    width:6px; height:6px;
-    border-radius:50%;
-    background:var(--brass);
-    flex-shrink:0;
-  }
-
-  /* publications */
-  .publications{ display:grid; gap:1.1rem; }
-
-  .pub-card{
-    padding:1.5rem 1.6rem;
-    background:#fbfaf5;
-    border:1px solid var(--line);
-    border-left:3px solid var(--slate);
-    border-radius:0.4rem;
-  }
-
-  .pub-card h3{
-    margin:0 0 0.6rem;
-    font-size:1.12rem;
-    line-height:1.35;
-  }
-
-  .pub-card h3 a{ color:var(--ink); text-decoration:none; }
-  .pub-card h3 a:hover{ color:var(--slate-dark); text-decoration:underline; }
-
-  .publication-meta{
-    display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem;
-    margin:0 0 0.75rem;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.78rem;
-    color:var(--ink-soft);
-  }
-
-  .open-access-badge{
-    display:inline-block;
-    padding:0.18rem 0.55rem;
-    border-radius:999px;
-    background:#e4ede3;
-    color:#2f5c34;
-    font-size:0.72rem;
-    font-weight:600;
-    letter-spacing:0.03em;
-    text-transform:uppercase;
-  }
-
-  .pub-card p{ margin:0; color:var(--ink-soft); }
-
-  .publication-link{
-    display:inline-block; margin-top:0.9rem;
-    font-weight:600; font-size:0.92rem;
-    text-decoration:none;
-  }
-
-  .publication-link:hover{ text-decoration:underline; }
-
-  /* timeline for activity */
-  .activity-list{ display:grid; gap:0.9rem; padding:0; margin:0; list-style:none; }
-
-  .activity-list li{
-    display:grid; grid-template-columns:6.5rem 1fr; gap:1rem;
-    padding-bottom:0.9rem; border-bottom:1px dashed var(--line);
-  }
-
-  .activity-list li:last-child{ border-bottom:none; padding-bottom:0; }
-
-  .activity-year{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.85rem; color:var(--slate);
-  }
-
-  .activity-desc{ color:var(--ink-soft); }
-  .activity-desc strong{ color:var(--ink); }
-
-  /* projects */
-  .projects{
-    display:grid;
-    grid-template-columns:repeat(2, minmax(0,1fr));
-    gap:1rem;
-  }
-
-  .card{
-    padding:1.4rem;
-    background:#fbfaf5;
-    border:1px solid var(--line);
-    border-radius:0.5rem;
-  }
-
-  .card h3{ margin:0 0 0.4rem; font-size:1.05rem; }
-  .card h3 a{ text-decoration:none; color:var(--ink); }
-  .card h3 a:hover{ color:var(--slate-dark); }
-  .card p{ margin:0; color:var(--ink-soft); font-size:0.94rem; }
-
-  /* podcast */
-  .teaching-card{ max-width:42rem; }
-
-  .podcast{
-    margin-top:1.2rem;
-    padding:1.15rem 1.25rem;
-    background:var(--paper-soft);
-    border:1px solid var(--line);
-    border-radius:0.55rem;
-  }
-
-  .podcast-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1rem;
-  }
-
-  .podcast .eyebrow{ margin:0; }
-
-  .podcast-duration{
-    color:var(--ink-soft);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-  }
-
-  .podcast h4{
-    margin:0.3rem 0 0.25rem;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:1.08rem;
-    color:var(--ink);
-  }
-
-  .podcast p{ margin:0; color:var(--ink-soft); font-size:0.9rem; }
-  .podcast audio{ display:block; width:100%; margin:0.9rem 0 0.55rem; }
-
-  .audio-download{
-    font-size:0.82rem;
-    font-weight:600;
-    text-decoration:none;
-  }
-
-  .audio-download:hover{ text-decoration:underline; }
-
-  /* contact */
-  .contact-card{
-    display:block;
-    padding:1.7rem 1.8rem;
-    background:var(--slate-dark);
-    color:#f2efe6;
-    border-radius:0.6rem;
-  }
-
-  .contact-card p{ margin:0.2rem 0 0; color:#cdd8e0; font-size:0.94rem; }
-  .contact-card a.button{ background:var(--brass); color:#241a0d; }
-  .contact-card a.button:hover{ background:#c19457; }
-
-  .contact-links{
-    margin-top:1rem;
-    display:flex; flex-wrap:wrap; gap:1.2rem;
-    font-size:0.92rem;
-  }
-
-  .contact-links a{ color:var(--ink); }
-
-  footer{
-    margin-top:2rem;
-    padding:2rem 0;
-    text-align:center;
-    color:var(--ink-soft);
-    font-size:0.88rem;
-    border-top:1px solid var(--line);
-  }
-
-  @media (max-width: 900px){
-    nav{ align-items:flex-start; }
-    .nav-links{ gap:0.65rem 0.9rem; }
-    .brand-role{ display:none; }
-  }
-
-  @media (max-width: 760px){
-    header{ position:static; }
-    nav{ align-items:center; flex-direction:column; gap:0.65rem; }
-    .nav-links{ justify-content:center; font-size:0.8rem; }
-    .hero{ grid-template-columns:1fr; gap:2.25rem; padding:3rem 0 2.75rem; }
-    .hero::before{ inset:0.7rem -0.45rem 0.45rem; border-radius:1rem; }
-    .profile-portrait{ width:min(70vw, 220px); }
-    .projects{ grid-template-columns:1fr; }
-    .contact-card{ grid-template-columns:1fr; text-align:left; }
-    .activity-list li{ grid-template-columns:1fr; gap:0.2rem; }
-  }
-
-  /* ---------- fluid editorial layout ---------- */
-  body{ overflow-x:hidden; }
-
-  header{
-    top:0.7rem;
-    padding:0 0.45rem;
-    background:transparent;
-    backdrop-filter:none;
-    border-bottom:0;
-    box-shadow:none;
-  }
-
-  header .container{
-    width:min(94%, 1120px);
-    padding:0 1rem;
-    background:rgba(251,250,245,0.91);
-    border:1px solid rgba(216,208,189,0.82);
-    border-radius:1rem;
-    box-shadow:0 14px 36px rgba(30,42,56,0.12);
-    backdrop-filter:blur(18px);
-  }
-
-  .brand{ color:var(--ink); }
-  .brand-mark{ background:var(--slate-dark); color:#f7f5ee; }
-  .brand-role{ color:var(--slate); }
-  .nav-links a{ color:var(--ink-soft); }
-  .nav-links a:hover{ color:var(--slate-dark); }
-  .language-switcher{ border-color:var(--line); }
-  .language-switcher [aria-current="page"]{ color:var(--ink); }
-  .language-switcher a{ color:var(--ink-soft); }
-
-  .hero{
-    gap:4.5rem;
-    padding:5.4rem 0 5rem;
-  }
-
-  .hero::before{
-    inset:1.15rem -3.3rem 0.65rem;
-    border-radius:2rem;
-    background:
-      radial-gradient(circle at 82% 20%, rgba(169,125,63,0.17), transparent 20rem),
-      linear-gradient(135deg, rgba(251,250,245,0.92), rgba(233,228,214,0.32));
-  }
-
-  main section{
-    padding:4.8rem 0;
-    scroll-margin-top:6.5rem;
-  }
-
-  .card,.pub-card,.signature,.profile-portrait{
-    transition:transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
-  }
-
-  .card:hover,.pub-card:hover{
-    transform:translateY(-4px);
-    border-color:rgba(43,88,118,0.35);
-    box-shadow:0 18px 38px rgba(30,42,56,0.09);
-  }
-
-  .teaching-section{ position:relative; }
-
-  .teaching-intro{
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-between;
-    gap:2rem;
-    margin-bottom:1.6rem;
-  }
-
-  .teaching-intro h2{ margin-bottom:0.65rem; }
-  .teaching-intro .section-lede{ margin:0; }
-
-  .course-badge{
-    flex-shrink:0;
-    display:inline-flex;
-    align-items:center;
-    gap:0.5rem;
-    padding:0.6rem 0.85rem;
-    border:1px solid var(--line);
-    border-radius:999px;
-    background:rgba(251,250,245,0.78);
-    color:var(--slate-dark);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.7rem;
-    letter-spacing:0.04em;
-  }
-
-  .course-badge::before{
-    content:"";
-    width:0.45rem;
-    height:0.45rem;
-    border-radius:50%;
-    background:var(--brass);
-  }
-
-  .teaching-layout{
-    display:grid;
-    grid-template-columns:minmax(0,1.45fr) minmax(260px,0.55fr);
-    gap:1.15rem;
-    align-items:stretch;
-  }
-
-  .teaching-panel{
-    padding:1.45rem;
-    border:1px solid var(--line);
-    border-radius:1.25rem;
-    background:rgba(251,250,245,0.86);
-    box-shadow:0 18px 45px rgba(30,42,56,0.07);
-  }
-
-  .panel-heading{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:1rem;
-    margin-bottom:1.15rem;
-  }
-
-  .panel-heading .eyebrow{ margin:0 0 0.18rem; }
-
-  .panel-heading h3{
-    margin:0;
-    font-size:1.45rem;
-  }
-
-  .panel-count{
-    padding:0.3rem 0.55rem;
-    border:1px solid var(--line);
-    border-radius:999px;
-    color:var(--ink-soft);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.67rem;
-    white-space:nowrap;
-  }
-
-  .episode-list{ display:grid; gap:0.8rem; }
-
-  .episode-card{
-    position:relative;
-    padding:1.15rem 1.2rem;
-    overflow:hidden;
-    border:1px solid rgba(216,208,189,0.88);
-    border-radius:0.9rem;
-    background:#fffef9;
-    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  }
-
-  .episode-card::before{
-    content:"";
-    position:absolute;
-    inset:0 auto 0 0;
-    width:3px;
-    background:linear-gradient(180deg,var(--brass),var(--slate));
-  }
-
-  .episode-card:hover{
-    transform:translateY(-3px);
-    border-color:rgba(43,88,118,0.35);
-    box-shadow:0 14px 28px rgba(30,42,56,0.09);
-  }
-
-  .episode-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:1rem;
-    margin-bottom:0.45rem;
-  }
-
-  .episode-number{
-    color:var(--slate);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.72rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-  }
-
-  .episode-duration{
-    color:var(--ink-soft);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.7rem;
-  }
-
-  .episode-card h4{
-    margin:0 0 0.28rem;
-    color:var(--ink);
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:1.16rem;
-  }
-
-  .episode-card p{
-    margin:0;
-    color:var(--ink-soft);
-    font-size:0.88rem;
-  }
-
-  .episode-card audio{
-    display:block;
-    width:100%;
-    height:2.55rem;
-    margin:0.85rem 0 0.5rem;
-  }
-
-  .episode-footer{
-    display:flex;
-    justify-content:flex-end;
-  }
-
-  .audio-download{
-    display:inline-flex;
-    align-items:center;
-    gap:0.35rem;
-    font-size:0.78rem;
-  }
-
-  .audio-download::after{ content:"↓"; }
-
-  .materials-panel{
-    display:flex;
-    flex-direction:column;
-    min-height:100%;
-    color:#f6f2e9;
-    background:
-      radial-gradient(circle at 90% 10%,rgba(169,125,63,0.38),transparent 13rem),
-      linear-gradient(155deg,var(--slate-dark),#132a3d);
-    border-color:rgba(28,58,82,0.35);
-  }
-
-  .materials-panel .eyebrow{ color:#a9c4d8; }
-  .materials-panel .panel-heading h3{ color:#fff; }
-  .materials-panel .panel-count{
-    color:#d7e0e7;
-    border-color:rgba(255,255,255,0.2);
-  }
-
-  .materials-empty{
-    display:flex;
-    flex:1;
-    flex-direction:column;
-    justify-content:flex-end;
-    min-height:17rem;
-    padding-top:3rem;
-  }
-
-  .materials-symbol{
-    display:grid;
-    place-items:center;
-    width:3rem;
-    height:3rem;
-    margin-bottom:auto;
-    border:1px solid rgba(255,255,255,0.28);
-    border-radius:50%;
-    color:#fff;
-    font-size:1.2rem;
-  }
-
-  .materials-empty h4{
-    margin:1.2rem 0 0.4rem;
-    color:#fff;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size:1.2rem;
-  }
-
-  .materials-empty p{
-    margin:0;
-    color:#cdd8e0;
-    font-size:0.88rem;
-  }
-
-  @keyframes hero-rise{
-    from{ opacity:0; transform:translateY(18px); }
-    to{ opacity:1; transform:translateY(0); }
-  }
-
-  .hero > div:first-child{ animation:hero-rise 0.72s ease both; }
-  .hero-media{ animation:hero-rise 0.72s 0.12s ease both; }
-
-  @supports (animation-timeline:view()){
-    main > section{
-      animation:section-rise linear both;
-      animation-timeline:view();
-      animation-range:entry 4% cover 24%;
-    }
-    @keyframes section-rise{
-      from{ opacity:0.35; transform:translateY(24px); }
-      to{ opacity:1; transform:translateY(0); }
-    }
-  }
-
-  @media (max-width:760px){
-    header{ position:static; top:auto; padding:0.45rem 0.25rem 0; }
-    header .container{ width:96%; padding:0.35rem 0.75rem; border-radius:0.85rem; }
-    .hero{ gap:2.4rem; padding:3.2rem 0 3rem; }
-    .hero::before{ inset:0.4rem -0.55rem 0.2rem; border-radius:1.2rem; }
-    main section{ padding:3.6rem 0; scroll-margin-top:1rem; }
-    .teaching-intro{ display:block; }
-    .course-badge{ margin-top:1rem; }
-    .teaching-layout{ grid-template-columns:1fr; }
-    .teaching-panel{ padding:1.05rem; border-radius:1rem; }
-    .panel-heading{ align-items:center; }
-    .materials-empty{ min-height:13rem; }
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    .hero > div:first-child,.hero-media,main > section{ animation:none !important; transform:none !important; }
-    .card,.pub-card,.episode-card{ transition:none; }
-  }
-
-
-  /* ---------- refined hierarchy and contrast ---------- */
-  body{ color:#172434; }
-
-  .hero{
-    grid-template-columns:minmax(0,1.12fr) minmax(320px,0.88fr);
-    gap:3.4rem;
-    padding:4.25rem 0 4rem;
-  }
-
-  .hero::before{
-    inset:0.75rem -2.1rem 0.35rem;
-    border-color:rgba(169,125,63,0.28);
-    border-radius:1.6rem;
-    background:
-      radial-gradient(circle at 84% 17%,rgba(169,125,63,0.22),transparent 18rem),
-      linear-gradient(135deg,rgba(255,254,249,0.96),rgba(228,219,200,0.48));
-    box-shadow:0 24px 65px rgba(30,42,56,0.08);
-  }
-
-  .hero h1{ font-size:clamp(2.45rem,5vw,3.45rem); }
-  .introduction{ color:#39485a; line-height:1.72; }
-
-  .profile-portrait{
-    width:min(100%,265px);
-    padding:1rem 0.9rem 0.75rem;
-    background:linear-gradient(145deg,#cfc1aa 0%,#e7decd 58%,#d5c6ae 100%);
-    border-color:rgba(129,91,42,0.38);
-    box-shadow:0 18px 38px rgba(30,42,56,0.14);
-  }
-
-  .profile-portrait img{
-    filter:contrast(1.13) saturate(0.86) brightness(0.96);
-  }
-
-  .signature{
-    border-radius:1rem;
-    border-color:rgba(43,88,118,0.22);
-    box-shadow:0 15px 34px rgba(30,42,56,0.1);
-  }
-
-  main > section{
-    padding:4.35rem 0;
-    opacity:1 !important;
-    transform:none !important;
-    animation:none !important;
-  }
-
-  h2{
-    margin-bottom:0.85rem;
-    font-size:clamp(1.85rem,3.4vw,2.35rem);
-    line-height:1.1;
-  }
-
-  h2::after{ width:clamp(4.5rem,12vw,8rem); }
-
-  .section-lede{
-    margin:0;
-    color:#455466;
-    font-size:1rem;
-  }
-
-  #about > p{
-    max-width:82ch;
-    color:#334356;
-    font-size:1.02rem;
-    line-height:1.78;
-  }
-
-  .section-heading-block{
-    max-width:46rem;
-    margin-bottom:1.8rem;
-  }
-
-  .section-kicker{
-    margin:0 0 0.4rem;
-    color:var(--slate);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.72rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-  }
-
-  .course-block{
-    padding:1.4rem;
-    border:1px solid rgba(216,208,189,0.95);
-    border-radius:1.35rem;
-    background:linear-gradient(145deg,rgba(255,254,249,0.92),rgba(233,228,214,0.62));
-    box-shadow:0 20px 52px rgba(30,42,56,0.075);
-  }
-
-  .course-heading{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:2rem;
-    padding:0.25rem 0.25rem 1.25rem;
-  }
-
-  .course-heading .eyebrow{ margin:0 0 0.25rem; }
-
-  .course-heading h3{
-    margin:0 0 0.35rem;
-    color:var(--ink);
-    font-size:clamp(1.35rem,2.5vw,1.7rem);
-  }
-
-  .course-heading p:last-child{
-    margin:0;
-    color:var(--ink-soft);
-    font-size:0.92rem;
-  }
-
-  .course-badge{
-    background:#fffef9;
-    box-shadow:0 6px 18px rgba(30,42,56,0.055);
-  }
-
-  .teaching-layout{
-    grid-template-columns:minmax(0,1.55fr) minmax(250px,0.55fr);
-  }
-
-  .teaching-panel{
-    padding:1.25rem;
-    border-radius:1.05rem;
-    box-shadow:none;
-  }
-
-  .episode-card{ background:rgba(255,255,255,0.78); }
-
-  .publications{
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:1rem;
-  }
-
-  .pub-card{
-    padding:1.55rem;
-    border:1px solid var(--line);
-    border-top:3px solid var(--slate);
-    border-left:1px solid var(--line);
-    border-radius:1rem;
-    background:rgba(255,254,249,0.84);
-  }
-
-  .pub-card:first-child{ grid-column:1/-1; }
-
-  .projects .card{
-    min-height:100%;
-    border-radius:1rem;
-    background:rgba(255,254,249,0.82);
-  }
-
-  .research-list li{
-    background:rgba(255,254,249,0.72);
-    box-shadow:0 5px 14px rgba(30,42,56,0.035);
-  }
-
-  .contact-card{
-    padding:2rem;
-    border-radius:1.15rem;
-    box-shadow:0 20px 45px rgba(28,58,82,0.17);
-  }
-
-  footer{ margin-top:0; }
-
-  @media (max-width:760px){
-    .hero{ grid-template-columns:1fr; gap:2.25rem; padding:2.8rem 0 3rem; }
-    .hero::before{ inset:0.25rem -0.55rem 0.15rem; }
-    .profile-portrait{ width:min(72vw,245px); }
-    main > section{ padding:3.4rem 0; }
-    .course-block{ padding:0.9rem; border-radius:1.05rem; }
-    .course-heading{ display:block; padding:0.2rem 0.2rem 1.1rem; }
-    .course-badge{ margin-top:0.85rem; }
-    .teaching-layout{ grid-template-columns:1fr; }
-    .publications{ grid-template-columns:1fr; }
-    .pub-card:first-child{ grid-column:auto; }
-  }
-
-
-  /* ---------- Helvetica Neue and mobile navigation ---------- */
-  button,input,select,textarea{
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
-
-  h1,h2,h3,h4,.brand-name,.signature-heading strong,
-  .signature .plot-label,.episode-card h4,.materials-empty h4{
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
-  }
-
-  h1,h2,h3,h4{ letter-spacing:-0.025em; }
-  h1{ font-weight:600; }
-  h2,h3,h4{ font-weight:600; }
-
-  .menu-toggle{
-    display:none;
-    width:2.7rem;
-    height:2.7rem;
-    padding:0.68rem 0.62rem;
-    flex-direction:column;
-    justify-content:space-between;
-    border:1px solid var(--line);
-    border-radius:0.72rem;
-    background:rgba(255,254,249,0.78);
-    color:var(--ink);
-    cursor:pointer;
-  }
-
-  .menu-toggle span{
-    display:block;
-    width:100%;
-    height:2px;
-    border-radius:999px;
-    background:currentColor;
-    transform-origin:center;
-    transition:transform 0.2s ease,opacity 0.2s ease;
-  }
-
-  .menu-toggle[aria-expanded="true"] span:nth-child(1){
-    transform:translateY(0.55rem) rotate(45deg);
-  }
-
-  .menu-toggle[aria-expanded="true"] span:nth-child(2){
-    opacity:0;
-  }
-
-  .menu-toggle[aria-expanded="true"] span:nth-child(3){
-    transform:translateY(-0.55rem) rotate(-45deg);
-  }
-
-  @keyframes menu-drop{
-    from{ opacity:0; transform:translateY(-0.45rem); }
-    to{ opacity:1; transform:translateY(0); }
-  }
-
-  @media (max-width:760px){
-    nav{
-      display:grid;
-      grid-template-columns:minmax(0,1fr) auto;
-      align-items:center;
-      gap:0.35rem 0.7rem;
-      padding:0.38rem 0;
-    }
-
-    .menu-toggle{ display:flex; }
-
-    .nav-links{
-      grid-column:1/-1;
-      width:100%;
-      flex-direction:column;
-      align-items:stretch;
-      justify-content:flex-start;
-      gap:0;
-      margin:0;
-      padding:0.25rem 0 0.45rem;
-      font-size:0.9rem;
-    }
-
-    .menu-enhanced .nav-links{ display:none; }
-
-    .menu-enhanced .nav-links.is-open{
-      display:flex;
-      animation:menu-drop 0.2s ease both;
-    }
-
-    .nav-links li{ width:100%; }
-
-    .nav-links a{
-      display:block;
-      width:100%;
-      padding:0.72rem 0.2rem;
-      border-bottom:1px solid rgba(216,208,189,0.72);
-    }
-
-    .nav-links a:hover{
-      border-color:var(--brass);
-      background:rgba(233,228,214,0.42);
-    }
-
-    .language-switcher{
-      width:max-content;
-      margin:0.55rem auto 0;
-      padding:0.38rem 0.68rem;
-      border:1px solid var(--line);
-    }
-
-    .language-switcher a{
-      display:inline;
-      width:auto;
-      padding:0;
-      border:0;
-    }
-
-    .brand-role{
-      display:block;
-      font-size:0.54rem;
-    }
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    .menu-toggle span,.menu-enhanced .nav-links.is-open{ transition:none; animation:none; }
-  }
-
-  /* ---------- floating cards ---------- */
-  :root{
-    --card-shadow:0 12px 30px rgba(30,42,56,0.09),0 3px 9px rgba(30,42,56,0.045);
-    --card-shadow-hover:0 24px 52px rgba(30,42,56,0.14),0 6px 16px rgba(30,42,56,0.07);
-  }
-
-  .course-block{
-    box-shadow:0 24px 58px rgba(30,42,56,0.11),0 5px 14px rgba(30,42,56,0.05);
-  }
-
-  .teaching-panel,
-  .episode-card,
-  .pub-card,
-  .projects .card{
-    box-shadow:var(--card-shadow);
-  }
-
-  .teaching-panel,
-  .episode-card,
-  .pub-card,
-  .projects .card{
-    transition:transform 0.28s ease,box-shadow 0.28s ease,border-color 0.28s ease;
-  }
-
-  @media (hover:hover) and (pointer:fine){
-    .teaching-panel:hover,
-    .episode-card:hover,
-    .pub-card:hover,
-    .projects .card:hover,
-    .teaching-panel:focus-within,
-    .episode-card:focus-within,
-    .pub-card:focus-within,
-    .projects .card:focus-within{
-      transform:translateY(-6px);
-      border-color:rgba(43,88,118,0.34);
-      box-shadow:var(--card-shadow-hover);
-    }
-  }
-
-  @media (max-width:760px){
-    .course-block{ box-shadow:0 16px 38px rgba(30,42,56,0.1); }
-
-    .teaching-panel,
-    .episode-card,
-    .pub-card,
-    .projects .card{
-      box-shadow:0 9px 22px rgba(30,42,56,0.085);
-    }
-  }
-
-  @media (prefers-reduced-motion:reduce){
-    .teaching-panel,
-    .episode-card,
-    .pub-card,
-    .projects .card{
-      transition:none;
-    }
-  }
-
-  /* ---------- persistent mobile header ---------- */
-  @media (max-width:760px){
-    body{ padding-top:4.35rem; }
-
-    header{
-      position:fixed;
-      inset:0 0 auto;
-      z-index:100;
-      width:100%;
-      padding:0.45rem 0.25rem 0;
-    }
-
-    header .container{
-      background:rgba(251,250,245,0.95);
-      box-shadow:0 12px 30px rgba(30,42,56,0.16);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-    }
-
-    .menu-enhanced .nav-links.is-open{
-      max-height:calc(100dvh - 5rem);
-      overflow-y:auto;
-      overscroll-behavior:contain;
-    }
-
-    main section{ scroll-margin-top:5.4rem; }
-  }
-
-  /* ---------- research quotation ---------- */
-  .research-quote{
-    position:relative;
-    max-width:54rem;
-    margin:-1.15rem auto 1.2rem;
-    padding:1.65rem 2.1rem 1.45rem 2.65rem;
-    overflow:hidden;
-    border:1px solid rgba(169,125,63,0.3);
-    border-radius:1.15rem;
-    background:linear-gradient(135deg,rgba(255,254,249,0.96),rgba(233,228,214,0.72));
-    box-shadow:0 18px 42px rgba(30,42,56,0.1),0 4px 12px rgba(30,42,56,0.045);
-  }
-
-  .research-quote::before{
-    content:"“";
-    position:absolute;
-    top:-0.45rem;
-    left:0.55rem;
-    color:rgba(169,125,63,0.28);
-    font-family:Georgia,serif;
-    font-size:5.4rem;
-    line-height:1;
-  }
-
-  .research-quote blockquote{ margin:0; }
-
-  .research-quote p{
-    margin:0;
-    color:var(--ink);
-    font-size:clamp(1.25rem,2.35vw,1.65rem);
-    font-weight:500;
-    line-height:1.42;
-    letter-spacing:-0.02em;
-  }
-
-  .research-quote figcaption{
-    margin-top:0.8rem;
-    color:var(--slate);
-    font-family:'IBM Plex Mono',monospace;
-    font-size:0.76rem;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-  }
-
-  @media (max-width:760px){
-    .research-quote{
-      margin:-0.55rem auto 0.4rem;
-      padding:1.4rem 1.25rem 1.25rem 2rem;
-      border-radius:1rem;
-    }
-
-    .research-quote::before{
-      left:0.3rem;
-      font-size:4.25rem;
-    }
-  }
-
-</style>
+<meta name="theme-color" content="#254edb">
+<link rel="stylesheet" href="/assets/site.css?v=20260910">
+<script src="/assets/site.js?v=20260910" defer></script>
 </head>
-
 <body>
-<header>
+<a class="skip-link" href="#main-content">Saltar al contenido</a>
+<header class="site-header">
   <div class="container">
     <nav aria-label="Navegación principal">
       <a class="brand" href="#top" aria-label="Gabriel Calvo Bayarri — inicio">
@@ -1362,8 +30,8 @@
         <span aria-hidden="true"></span>
       </button>
       <ul class="nav-links" id="primary-navigation">
-        <li><a href="#about">Sobre mí</a></li>
         <li><a href="#teaching">Docencia</a></li>
+        <li><a href="#about">Sobre mí</a></li>
         <li><a href="#research">Investigación</a></li>
         <li><a href="#publications">Publicaciones</a></li>
         <li><a href="#projects">Proyectos</a></li>
@@ -1377,103 +45,53 @@
     </nav>
   </div>
 </header>
-
 <div id="top" class="container">
-
-  <section class="hero" aria-labelledby="page-title">
-    <div>
-      <p class="eyebrow">Estadístico</p>
-      <h1 id="page-title">Gabriel Calvo Bayarri</h1>
+<section class="hero" aria-labelledby="page-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Estadística bayesiana</p>
+      <h1 id="page-title"><span>Gabriel</span> <span>Calvo Bayarri<span class="name-dot" aria-hidden="true">.</span></span></h1>
       <p class="subtitle">Universitat de València</p>
-      <p class="introduction">
-        Trabajo en modelos bayesianos jerárquicos y longitudinales, desarrollando
-        metodología para datos de medidas repetidas y dependientes del tiempo, así
-        como estructuras ocultas de Markov, con aplicaciones en analítica deportiva,
-        ciencias pesqueras y biomedicina. Realicé mi doctorado conjuntamente en la
-        Universitat de València y BioSS, y actualmente imparto estadística y
-        bioestadística en la Universitat de València.
-      </p>
-
-      <p class="introduction" style="margin-top:0.9rem;">
-        <a href="mailto:gabriel.calvo@uv.es" style="font-family:'IBM Plex Mono', monospace; font-size:0.92rem; color:var(--slate-dark);">gabriel.calvo@uv.es</a>
-      </p>
-
+      <p class="introduction">Desarrollo modelos para comprender datos que evolucionan en el tiempo, con aplicaciones en deporte, biomedicina y ciencias pesqueras. Investigo y enseño estadística en la Universitat de València.</p>
       <div class="buttons">
-        <a class="button secondary" href="https://scholar.google.com/citations?user=3RSI4sgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <a class="button" href="#teaching">Explorar docencia<span aria-hidden="true">↓</span></a>
+        <a class="button secondary" href="#publications">Publicaciones</a>
+      </div>
+      <div class="hero-links">
+        <a href="mailto:gabriel.calvo@uv.es">gabriel.calvo@uv.es</a>
+        <a href="https://scholar.google.com/citations?user=3RSI4sgAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
       </div>
     </div>
-
     <div class="hero-media">
-      <div class="profile-portrait">
-        <img src="/ilustracion_perfil.jpeg" alt="Ilustración de Gabriel Calvo Bayarri" width="1086" height="1448">
-      </div>
-
-    <figure class="signature">
-      <div class="signature-heading">
-        <strong>Aprendizaje bayesiano</strong>
-        <span>actualizar la incertidumbre</span>
-      </div>
-      <svg viewBox="0 0 380 215" role="img" aria-labelledby="bayes-title-es bayes-desc-es" xmlns="http://www.w3.org/2000/svg">
-        <title id="bayes-title-es">De la distribución a priori a la distribución a posteriori</title>
-        <desc id="bayes-desc-es">Una distribución a priori amplia y discontinua se actualiza con los datos para formar una distribución a posteriori más concentrada.</desc>
-        <rect class="panel" x="14" y="15" width="150" height="180" rx="10"/>
-        <rect class="panel" x="216" y="15" width="150" height="180" rx="10"/>
-        <text class="plot-label" x="30" y="43">A priori</text>
-        <text class="plot-note" x="30" y="59">ANTES DE LOS DATOS</text>
-        <line class="baseline" x1="28" y1="166" x2="150" y2="166"/>
-        <path class="prior-fill" d="M28,166 C43,166 51,93 89,93 C127,93 135,166 150,166 Z"/>
-        <path class="prior-curve" d="M28,166 C43,166 51,93 89,93 C127,93 135,166 150,166"/>
-        <circle class="update-circle" cx="190" cy="110" r="22"/>
-        <text class="update-symbol" x="190" y="107">+</text>
-        <text class="update-symbol" x="190" y="120" style="font-size:7px">DATOS</text>
-        <path d="M174,143 L205,143 M199,138 L205,143 L199,148" fill="none" stroke="#1c3a52" stroke-width="1.6"/>
-        <text class="plot-label" x="232" y="43">A posteriori</text>
-        <text class="plot-note" x="232" y="59">DESPUÉS DE LOS DATOS</text>
-        <line class="baseline" x1="230" y1="166" x2="352" y2="166"/>
-        <path class="posterior-fill" d="M230,166 C268,166 273,63 291,63 C309,63 314,166 352,166 Z"/>
-        <path class="posterior-curve" d="M230,166 C268,166 273,63 291,63 C309,63 314,166 352,166"/>
+      <div class="profile-portrait"><img src="/ilustracion_perfil.jpeg" alt="Ilustración de Gabriel Calvo Bayarri" width="1086" height="1448" fetchpriority="high" decoding="async"></div>
+      <figure class="signature">
+      <div class="signature-heading"><strong>Aprendizaje bayesiano</strong></div>
+      <svg viewBox="0 0 430 122" role="img" aria-labelledby="bayes-title-es bayes-desc-es" xmlns="http://www.w3.org/2000/svg">
+        <title id="bayes-title-es">A priori · A posteriori</title>
+        <desc id="bayes-desc-es">Ejemplo ilustrativo de dos densidades en una misma escala: una distribución a priori amplia y discontinua, y una distribución a posteriori más concentrada, en azul.</desc>
+        <path class="prior-fill" d="M12.00,111.37 L14.03,111.31 L16.06,111.25 L18.09,111.18 L20.12,111.11 L22.15,111.03 L24.18,110.95 L26.21,110.86 L28.24,110.76 L30.27,110.66 L32.30,110.55 L34.33,110.43 L36.36,110.31 L38.39,110.18 L40.42,110.03 L42.45,109.88 L44.48,109.72 L46.51,109.55 L48.54,109.37 L50.57,109.18 L52.60,108.98 L54.63,108.77 L56.66,108.54 L58.69,108.30 L60.72,108.06 L62.75,107.79 L64.78,107.52 L66.81,107.23 L68.84,106.93 L70.87,106.61 L72.90,106.28 L74.93,105.94 L76.96,105.58 L78.99,105.21 L81.02,104.82 L83.05,104.41 L85.08,104.00 L87.11,103.56 L89.14,103.11 L91.17,102.65 L93.20,102.18 L95.23,101.68 L97.26,101.18 L99.29,100.66 L101.32,100.13 L103.35,99.58 L105.38,99.02 L107.41,98.46 L109.44,97.87 L111.47,97.28 L113.50,96.68 L115.53,96.07 L117.56,95.45 L119.59,94.83 L121.62,94.19 L123.65,93.55 L125.68,92.91 L127.71,92.27 L129.74,91.62 L131.77,90.97 L133.80,90.32 L135.83,89.68 L137.86,89.03 L139.89,88.39 L141.92,87.76 L143.95,87.13 L145.98,86.52 L148.01,85.91 L150.04,85.31 L152.07,84.73 L154.10,84.16 L156.13,83.61 L158.16,83.07 L160.19,82.55 L162.22,82.05 L164.25,81.58 L166.28,81.12 L168.31,80.69 L170.34,80.28 L172.37,79.90 L174.40,79.55 L176.43,79.22 L178.46,78.93 L180.49,78.66 L182.52,78.42 L184.55,78.22 L186.58,78.04 L188.61,77.90 L190.64,77.79 L192.67,77.72 L194.70,77.68 L196.73,77.67 L198.76,77.69 L200.79,77.75 L202.82,77.84 L204.85,77.96 L206.88,78.11 L208.91,78.30 L210.94,78.52 L212.97,78.77 L215.00,79.05 L217.03,79.36 L219.06,79.70 L221.09,80.06 L223.12,80.45 L225.15,80.87 L227.18,81.31 L229.21,81.77 L231.24,82.26 L233.27,82.77 L235.30,83.29 L237.33,83.84 L239.36,84.40 L241.39,84.97 L243.42,85.56 L245.45,86.16 L247.48,86.77 L249.51,87.40 L251.54,88.03 L253.57,88.66 L255.60,89.30 L257.63,89.95 L259.66,90.59 L261.69,91.24 L263.72,91.89 L265.75,92.54 L267.78,93.18 L269.81,93.82 L271.84,94.46 L273.87,95.09 L275.90,95.71 L277.93,96.33 L279.96,96.94 L281.99,97.53 L284.02,98.12 L286.05,98.70 L288.08,99.26 L290.11,99.81 L292.14,100.35 L294.17,100.88 L296.20,101.39 L298.23,101.89 L300.26,102.38 L302.29,102.85 L304.32,103.31 L306.35,103.75 L308.38,104.17 L310.41,104.59 L312.44,104.98 L314.47,105.36 L316.50,105.73 L318.53,106.08 L320.56,106.42 L322.59,106.75 L324.62,107.06 L326.65,107.35 L328.68,107.64 L330.71,107.91 L332.74,108.16 L334.77,108.41 L336.80,108.64 L338.83,108.86 L340.86,109.07 L342.89,109.26 L344.92,109.45 L346.95,109.63 L348.98,109.79 L351.01,109.95 L353.04,110.10 L355.07,110.23 L357.10,110.36 L359.13,110.49 L361.16,110.60 L363.19,110.71 L365.22,110.81 L367.25,110.90 L369.28,110.99 L371.31,111.07 L373.34,111.14 L375.37,111.21 L377.40,111.28 L379.43,111.34 L381.46,111.39 L383.49,111.44 L385.52,111.49 L387.55,111.54 L389.58,111.58 L391.61,111.61 L393.64,111.65 L395.67,111.68 L397.70,111.71 L399.73,111.74 L401.76,111.76 L403.79,111.78 L405.82,111.80 L407.85,111.82 L409.88,111.84 L411.91,111.86 L413.94,111.87 L415.97,111.88 L418.00,111.89 L418,112 L12,112 Z"/>
+        <path class="posterior-fill" d="M12.00,112.00 L14.03,112.00 L16.06,112.00 L18.09,112.00 L20.12,112.00 L22.15,112.00 L24.18,112.00 L26.21,112.00 L28.24,112.00 L30.27,112.00 L32.30,112.00 L34.33,112.00 L36.36,112.00 L38.39,112.00 L40.42,112.00 L42.45,112.00 L44.48,112.00 L46.51,112.00 L48.54,112.00 L50.57,112.00 L52.60,112.00 L54.63,112.00 L56.66,112.00 L58.69,112.00 L60.72,112.00 L62.75,112.00 L64.78,112.00 L66.81,112.00 L68.84,112.00 L70.87,112.00 L72.90,112.00 L74.93,112.00 L76.96,112.00 L78.99,112.00 L81.02,112.00 L83.05,112.00 L85.08,112.00 L87.11,112.00 L89.14,112.00 L91.17,112.00 L93.20,112.00 L95.23,112.00 L97.26,112.00 L99.29,112.00 L101.32,112.00 L103.35,112.00 L105.38,112.00 L107.41,112.00 L109.44,112.00 L111.47,112.00 L113.50,112.00 L115.53,112.00 L117.56,112.00 L119.59,112.00 L121.62,112.00 L123.65,112.00 L125.68,112.00 L127.71,112.00 L129.74,112.00 L131.77,112.00 L133.80,112.00 L135.83,112.00 L137.86,111.99 L139.89,111.99 L141.92,111.99 L143.95,111.98 L145.98,111.98 L148.01,111.97 L150.04,111.96 L152.07,111.94 L154.10,111.92 L156.13,111.89 L158.16,111.85 L160.19,111.81 L162.22,111.74 L164.25,111.66 L166.28,111.56 L168.31,111.43 L170.34,111.27 L172.37,111.06 L174.40,110.80 L176.43,110.49 L178.46,110.10 L180.49,109.63 L182.52,109.06 L184.55,108.39 L186.58,107.58 L188.61,106.63 L190.64,105.52 L192.67,104.22 L194.70,102.73 L196.73,101.03 L198.76,99.10 L200.79,96.92 L202.82,94.50 L204.85,91.81 L206.88,88.87 L208.91,85.67 L210.94,82.23 L212.97,78.55 L215.00,74.66 L217.03,70.60 L219.06,66.39 L221.09,62.08 L223.12,57.71 L225.15,53.35 L227.18,49.06 L229.21,44.89 L231.24,40.90 L233.27,37.18 L235.30,33.77 L237.33,30.74 L239.36,28.14 L241.39,26.02 L243.42,24.42 L245.45,23.38 L247.48,22.90 L249.51,23.01 L251.54,23.70 L253.57,24.95 L255.60,26.74 L257.63,29.04 L259.66,31.81 L261.69,34.98 L263.72,38.52 L265.75,42.35 L267.78,46.40 L269.81,50.63 L271.84,54.96 L273.87,59.32 L275.90,63.67 L277.93,67.95 L279.96,72.11 L281.99,76.12 L284.02,79.93 L286.05,83.52 L288.08,86.88 L290.11,89.99 L292.14,92.83 L294.17,95.42 L296.20,97.75 L298.23,99.84 L300.26,101.68 L302.29,103.30 L304.32,104.72 L306.35,105.95 L308.38,107.00 L310.41,107.89 L312.44,108.65 L314.47,109.29 L316.50,109.82 L318.53,110.25 L320.56,110.61 L322.59,110.90 L324.62,111.14 L326.65,111.33 L328.68,111.48 L330.71,111.60 L332.74,111.70 L334.77,111.77 L336.80,111.83 L338.83,111.87 L340.86,111.90 L342.89,111.93 L344.92,111.95 L346.95,111.96 L348.98,111.97 L351.01,111.98 L353.04,111.99 L355.07,111.99 L357.10,111.99 L359.13,111.99 L361.16,112.00 L363.19,112.00 L365.22,112.00 L367.25,112.00 L369.28,112.00 L371.31,112.00 L373.34,112.00 L375.37,112.00 L377.40,112.00 L379.43,112.00 L381.46,112.00 L383.49,112.00 L385.52,112.00 L387.55,112.00 L389.58,112.00 L391.61,112.00 L393.64,112.00 L395.67,112.00 L397.70,112.00 L399.73,112.00 L401.76,112.00 L403.79,112.00 L405.82,112.00 L407.85,112.00 L409.88,112.00 L411.91,112.00 L413.94,112.00 L415.97,112.00 L418.00,112.00 L418,112 L12,112 Z"/>
+        <line class="chart-baseline" x1="12" y1="112" x2="418" y2="112"/>
+        <path class="prior-curve" d="M12.00,111.37 L14.03,111.31 L16.06,111.25 L18.09,111.18 L20.12,111.11 L22.15,111.03 L24.18,110.95 L26.21,110.86 L28.24,110.76 L30.27,110.66 L32.30,110.55 L34.33,110.43 L36.36,110.31 L38.39,110.18 L40.42,110.03 L42.45,109.88 L44.48,109.72 L46.51,109.55 L48.54,109.37 L50.57,109.18 L52.60,108.98 L54.63,108.77 L56.66,108.54 L58.69,108.30 L60.72,108.06 L62.75,107.79 L64.78,107.52 L66.81,107.23 L68.84,106.93 L70.87,106.61 L72.90,106.28 L74.93,105.94 L76.96,105.58 L78.99,105.21 L81.02,104.82 L83.05,104.41 L85.08,104.00 L87.11,103.56 L89.14,103.11 L91.17,102.65 L93.20,102.18 L95.23,101.68 L97.26,101.18 L99.29,100.66 L101.32,100.13 L103.35,99.58 L105.38,99.02 L107.41,98.46 L109.44,97.87 L111.47,97.28 L113.50,96.68 L115.53,96.07 L117.56,95.45 L119.59,94.83 L121.62,94.19 L123.65,93.55 L125.68,92.91 L127.71,92.27 L129.74,91.62 L131.77,90.97 L133.80,90.32 L135.83,89.68 L137.86,89.03 L139.89,88.39 L141.92,87.76 L143.95,87.13 L145.98,86.52 L148.01,85.91 L150.04,85.31 L152.07,84.73 L154.10,84.16 L156.13,83.61 L158.16,83.07 L160.19,82.55 L162.22,82.05 L164.25,81.58 L166.28,81.12 L168.31,80.69 L170.34,80.28 L172.37,79.90 L174.40,79.55 L176.43,79.22 L178.46,78.93 L180.49,78.66 L182.52,78.42 L184.55,78.22 L186.58,78.04 L188.61,77.90 L190.64,77.79 L192.67,77.72 L194.70,77.68 L196.73,77.67 L198.76,77.69 L200.79,77.75 L202.82,77.84 L204.85,77.96 L206.88,78.11 L208.91,78.30 L210.94,78.52 L212.97,78.77 L215.00,79.05 L217.03,79.36 L219.06,79.70 L221.09,80.06 L223.12,80.45 L225.15,80.87 L227.18,81.31 L229.21,81.77 L231.24,82.26 L233.27,82.77 L235.30,83.29 L237.33,83.84 L239.36,84.40 L241.39,84.97 L243.42,85.56 L245.45,86.16 L247.48,86.77 L249.51,87.40 L251.54,88.03 L253.57,88.66 L255.60,89.30 L257.63,89.95 L259.66,90.59 L261.69,91.24 L263.72,91.89 L265.75,92.54 L267.78,93.18 L269.81,93.82 L271.84,94.46 L273.87,95.09 L275.90,95.71 L277.93,96.33 L279.96,96.94 L281.99,97.53 L284.02,98.12 L286.05,98.70 L288.08,99.26 L290.11,99.81 L292.14,100.35 L294.17,100.88 L296.20,101.39 L298.23,101.89 L300.26,102.38 L302.29,102.85 L304.32,103.31 L306.35,103.75 L308.38,104.17 L310.41,104.59 L312.44,104.98 L314.47,105.36 L316.50,105.73 L318.53,106.08 L320.56,106.42 L322.59,106.75 L324.62,107.06 L326.65,107.35 L328.68,107.64 L330.71,107.91 L332.74,108.16 L334.77,108.41 L336.80,108.64 L338.83,108.86 L340.86,109.07 L342.89,109.26 L344.92,109.45 L346.95,109.63 L348.98,109.79 L351.01,109.95 L353.04,110.10 L355.07,110.23 L357.10,110.36 L359.13,110.49 L361.16,110.60 L363.19,110.71 L365.22,110.81 L367.25,110.90 L369.28,110.99 L371.31,111.07 L373.34,111.14 L375.37,111.21 L377.40,111.28 L379.43,111.34 L381.46,111.39 L383.49,111.44 L385.52,111.49 L387.55,111.54 L389.58,111.58 L391.61,111.61 L393.64,111.65 L395.67,111.68 L397.70,111.71 L399.73,111.74 L401.76,111.76 L403.79,111.78 L405.82,111.80 L407.85,111.82 L409.88,111.84 L411.91,111.86 L413.94,111.87 L415.97,111.88 L418.00,111.89"/>
+        <path class="posterior-curve" d="M12.00,112.00 L14.03,112.00 L16.06,112.00 L18.09,112.00 L20.12,112.00 L22.15,112.00 L24.18,112.00 L26.21,112.00 L28.24,112.00 L30.27,112.00 L32.30,112.00 L34.33,112.00 L36.36,112.00 L38.39,112.00 L40.42,112.00 L42.45,112.00 L44.48,112.00 L46.51,112.00 L48.54,112.00 L50.57,112.00 L52.60,112.00 L54.63,112.00 L56.66,112.00 L58.69,112.00 L60.72,112.00 L62.75,112.00 L64.78,112.00 L66.81,112.00 L68.84,112.00 L70.87,112.00 L72.90,112.00 L74.93,112.00 L76.96,112.00 L78.99,112.00 L81.02,112.00 L83.05,112.00 L85.08,112.00 L87.11,112.00 L89.14,112.00 L91.17,112.00 L93.20,112.00 L95.23,112.00 L97.26,112.00 L99.29,112.00 L101.32,112.00 L103.35,112.00 L105.38,112.00 L107.41,112.00 L109.44,112.00 L111.47,112.00 L113.50,112.00 L115.53,112.00 L117.56,112.00 L119.59,112.00 L121.62,112.00 L123.65,112.00 L125.68,112.00 L127.71,112.00 L129.74,112.00 L131.77,112.00 L133.80,112.00 L135.83,112.00 L137.86,111.99 L139.89,111.99 L141.92,111.99 L143.95,111.98 L145.98,111.98 L148.01,111.97 L150.04,111.96 L152.07,111.94 L154.10,111.92 L156.13,111.89 L158.16,111.85 L160.19,111.81 L162.22,111.74 L164.25,111.66 L166.28,111.56 L168.31,111.43 L170.34,111.27 L172.37,111.06 L174.40,110.80 L176.43,110.49 L178.46,110.10 L180.49,109.63 L182.52,109.06 L184.55,108.39 L186.58,107.58 L188.61,106.63 L190.64,105.52 L192.67,104.22 L194.70,102.73 L196.73,101.03 L198.76,99.10 L200.79,96.92 L202.82,94.50 L204.85,91.81 L206.88,88.87 L208.91,85.67 L210.94,82.23 L212.97,78.55 L215.00,74.66 L217.03,70.60 L219.06,66.39 L221.09,62.08 L223.12,57.71 L225.15,53.35 L227.18,49.06 L229.21,44.89 L231.24,40.90 L233.27,37.18 L235.30,33.77 L237.33,30.74 L239.36,28.14 L241.39,26.02 L243.42,24.42 L245.45,23.38 L247.48,22.90 L249.51,23.01 L251.54,23.70 L253.57,24.95 L255.60,26.74 L257.63,29.04 L259.66,31.81 L261.69,34.98 L263.72,38.52 L265.75,42.35 L267.78,46.40 L269.81,50.63 L271.84,54.96 L273.87,59.32 L275.90,63.67 L277.93,67.95 L279.96,72.11 L281.99,76.12 L284.02,79.93 L286.05,83.52 L288.08,86.88 L290.11,89.99 L292.14,92.83 L294.17,95.42 L296.20,97.75 L298.23,99.84 L300.26,101.68 L302.29,103.30 L304.32,104.72 L306.35,105.95 L308.38,107.00 L310.41,107.89 L312.44,108.65 L314.47,109.29 L316.50,109.82 L318.53,110.25 L320.56,110.61 L322.59,110.90 L324.62,111.14 L326.65,111.33 L328.68,111.48 L330.71,111.60 L332.74,111.70 L334.77,111.77 L336.80,111.83 L338.83,111.87 L340.86,111.90 L342.89,111.93 L344.92,111.95 L346.95,111.96 L348.98,111.97 L351.01,111.98 L353.04,111.99 L355.07,111.99 L357.10,111.99 L359.13,111.99 L361.16,112.00 L363.19,112.00 L365.22,112.00 L367.25,112.00 L369.28,112.00 L371.31,112.00 L373.34,112.00 L375.37,112.00 L377.40,112.00 L379.43,112.00 L381.46,112.00 L383.49,112.00 L385.52,112.00 L387.55,112.00 L389.58,112.00 L391.61,112.00 L393.64,112.00 L395.67,112.00 L397.70,112.00 L399.73,112.00 L401.76,112.00 L403.79,112.00 L405.82,112.00 L407.85,112.00 L409.88,112.00 L411.91,112.00 L413.94,112.00 L415.97,112.00 L418.00,112.00"/>
       </svg>
-      <figcaption class="signature-caption">
-        <span class="legend prior">A priori</span>
-        <span class="legend">A posteriori</span><br>
-        Los datos transforman la incertidumbre inicial en una distribución a posteriori más concentrada.
-      </figcaption>
+      <div class="chart-legend"><span class="legend prior">A priori</span><span class="legend">A posteriori</span></div>
+      <figcaption class="signature-caption">Ejemplo de actualización de la incertidumbre con datos.</figcaption>
     </figure>
     </div>
   </section>
-
-  <figure class="research-quote">
+<figure class="research-quote">
+    <span class="quote-mark" aria-hidden="true">“</span>
     <blockquote>
       <p>Es la irreductibilidad del misterio lo que suscita el dinamismo de la investigación.</p>
     </blockquote>
     <figcaption>Olivier Clément</figcaption>
   </figure>
-
-  <main>
-    <section id="about">
-      <h2>Sobre mí</h2>
-      <p>
-        Mi tesis doctoral, <em>Bayesian hierarchical modelling for repeated
-        measures and longitudinal data</em>, fue dirigida por Carmen Armero
-        (Universitat de València) y Luigi Spezia (Biomathematics &amp;
-        Statistics Scotland), y combinó estancias en Luxemburgo y Albacete. En
-        ella desarrollé modelos jerárquicos y modelos ocultos de Markov para
-        datos que evolucionan en el tiempo, una línea de trabajo que actualmente
-        abarca las alineaciones de baloncesto en silla de ruedas, las secuencias
-        de tiro en la NBA, las poblaciones de sardina del Mediterráneo y la
-        monitorización quirúrgica. En la actualidad imparto estadística y bioestadística en la
-        Universitat de València y formo parte del
-        <a href="https://vabar.github.io/members/" target="_blank" rel="noopener noreferrer">Valencia Bayesian Research Group (VABAR)</a>
-        y de <a href="https://math.uni.lu/midas/people/dp/?gabrielcalvo" target="_blank" rel="noopener noreferrer">Team MIDAS</a>.
-      </p>
-    </section>
-
-    <section id="teaching" class="teaching-section">
+<main id="main-content">
+<section id="teaching" class="teaching-section">
       <div class="section-heading-block">
-        <p class="section-kicker">Recursos docentes</p>
-        <h2>Docencia</h2>
-        <p class="section-lede">Audios, apuntes y materiales descargables de mis asignaturas.</p>
-      </div>
+      <div><p class="section-kicker">01 / Recursos docentes</p><h2>Docencia</h2></div>
+      <p class="section-lede">Audios, apuntes y materiales descargables de mis asignaturas.</p>
+    </div>
 
       <article class="course-block">
         <div class="course-heading">
@@ -1490,7 +108,7 @@
             <div class="panel-heading">
               <div>
                 <p class="eyebrow">Escuchar</p>
-                <h3 id="podcast-title-es">Pódcast</h3>
+                <h4 id="podcast-title-es">Pódcast</h4>
               </div>
               <span class="panel-count">2 capítulos</span>
             </div>
@@ -1501,14 +119,14 @@
                   <span class="episode-number">Capítulo 01</span>
                   <span class="episode-duration">6 min 24 s</span>
                 </div>
-                <h4>Regresión lineal múltiple</h4>
+                <h5>Regresión lineal múltiple</h5>
                 <p>Introducción en audio a la regresión lineal múltiple.</p>
                 <audio controls preload="metadata" aria-label="Pódcast: Capítulo 1, Regresión lineal múltiple">
                   <source src="/audio/capitulo_modelo_lineal_es.m4a" type="audio/mp4">
                   Tu navegador no permite reproducir este audio.
                 </audio>
                 <div class="episode-footer">
-                  <a class="audio-download" href="/audio/capitulo_modelo_lineal_es.m4a" download>Descargar audio</a>
+                  <a class="audio-download" href="/audio/capitulo_modelo_lineal_es.m4a" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg>Descargar audio</a>
                 </div>
               </article>
 
@@ -1517,14 +135,14 @@
                   <span class="episode-number">Capítulo 02</span>
                   <span class="episode-duration">5 min 44 s</span>
                 </div>
-                <h4>ANOVA</h4>
+                <h5>ANOVA</h5>
                 <p>Introducción en audio al análisis de la varianza.</p>
                 <audio controls preload="metadata" aria-label="Pódcast: Capítulo 2, ANOVA">
                   <source src="/audio/capitulo2_anova_es.m4a" type="audio/mp4">
                   Tu navegador no permite reproducir este audio.
                 </audio>
                 <div class="episode-footer">
-                  <a class="audio-download" href="/audio/capitulo2_anova_es.m4a" download>Descargar audio</a>
+                  <a class="audio-download" href="/audio/capitulo2_anova_es.m4a" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 16v4h14v-4"/></svg>Descargar audio</a>
                 </div>
               </article>
             </div>
@@ -1534,23 +152,41 @@
             <div class="panel-heading">
               <div>
                 <p class="eyebrow">Leer y descargar</p>
-                <h3 id="materials-title-es">Apuntes y recursos</h3>
+                <h4 id="materials-title-es">Apuntes y recursos</h4>
               </div>
               <span class="panel-count">Próximamente</span>
             </div>
             <div class="materials-empty">
-              <span class="materials-symbol" aria-hidden="true">↗</span>
-              <h4>Espacio preparado para nuevo material</h4>
-              <p>Aquí aparecerán los apuntes, archivos descargables y enlaces útiles cuando estén disponibles.</p>
-            </div>
+      <span class="materials-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M13 3H5v18h14V9l-6-6Zm0 0v6h6M8 13h8M8 17h6"/></svg></span>
+      <p>Aquí aparecerán los apuntes, archivos descargables y enlaces útiles cuando estén disponibles.</p>
+    </div>
           </div>
         </div>
       </article>
     </section>
 
-    <section id="research">
-      <h2>Áreas de investigación</h2>
-      <ul class="research-list">
+<section id="about" class="about-section">
+    <div><p class="section-kicker">02 / Trayectoria</p><h2>Sobre mí</h2></div>
+    <div class="about-copy"><p>
+        Mi tesis doctoral, <em>Bayesian hierarchical modelling for repeated
+        measures and longitudinal data</em>, fue dirigida por Carmen Armero
+        (Universitat de València) y Luigi Spezia (Biomathematics &amp;
+        Statistics Scotland), y combinó estancias en Luxemburgo y Albacete. En
+        ella desarrollé modelos jerárquicos y modelos ocultos de Markov para
+        datos que evolucionan en el tiempo, una línea de trabajo que actualmente
+        abarca las alineaciones de baloncesto en silla de ruedas, las secuencias
+        de tiro en la NBA, las poblaciones de sardina del Mediterráneo y la
+        monitorización quirúrgica. </p>
+      <p>En la actualidad imparto estadística y bioestadística en la
+        Universitat de València y formo parte del
+        <a href="https://vabar.github.io/members/" target="_blank" rel="noopener noreferrer">Valencia Bayesian Research Group (VABAR)</a>
+        y de <a href="https://math.uni.lu/midas/people/dp/?gabrielcalvo" target="_blank" rel="noopener noreferrer">Team MIDAS</a>.
+      </p></div>
+  </section>
+
+<section id="research" class="research-section">
+    <div><p class="section-kicker">03 / Líneas de trabajo</p><h2>Áreas de investigación</h2></div>
+    <ul class="research-list">
         <li>Estadística bayesiana</li>
         <li>Datos longitudinales</li>
         <li>Modelos jerárquicos</li>
@@ -1559,21 +195,18 @@
         <li>Analítica deportiva</li>
         <li>Bioestadística</li>
       </ul>
-    </section>
+  </section>
 
-    <section id="publications">
-      <h2>Publicaciones destacadas</h2>
-      <p class="section-lede">
-        Artículos de revista como primer autor, todos disponibles gratuitamente en los siguientes enlaces.
-      </p>
-
-      <div class="publications">
-        <article class="pub-card">
-          <h3>
+<section id="publications">
+    <div class="section-heading-block">
+      <div><p class="section-kicker">04 / Investigación publicada</p><h2>Publicaciones destacadas</h2></div>
+      <p class="section-lede">Artículos de revista como primer autor, todos disponibles en acceso abierto.</p>
+    </div>
+    <div class="publications"><article class="pub-card featured"><div class="featured-heading"><span class="publication-number" aria-hidden="true">01</span><h3>
             <a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">
               Selecting the Best Compositions of a Wheelchair Basketball Team: A Data-Driven Approach
             </a>
-          </h3>
+          </h3></div><div class="featured-body">
           <p class="publication-meta">
             <span>The American Statistician · 2025</span>
             <span class="open-access-badge">Acceso abierto</span>
@@ -1585,9 +218,8 @@
             la inferencia estadística con las decisiones deportivas.
           </p>
           <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/00031305.2024.2402246" target="_blank" rel="noopener noreferrer">Leer artículo →</a>
-        </article>
-
-        <article class="pub-card">
+        </div></article><article class="pub-card">
+<span class="publication-number" aria-hidden="true">02</span>
           <h3>
             <a href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">
               Can the Hot Hand Phenomenon Be Modelled? A Bayesian Hidden Markov Approach
@@ -1605,9 +237,8 @@
             aciertos y fallos.
           </p>
           <a class="publication-link" href="https://link.springer.com/article/10.1007/s00180-024-01560-8" target="_blank" rel="noopener noreferrer">Leer artículo →</a>
-        </article>
-
-        <article class="pub-card">
+        </article><article class="pub-card">
+<span class="publication-number" aria-hidden="true">03</span>
           <h3>
             <a href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">
               Bayes Factors for Longitudinal Model Assessment via Power Posteriors
@@ -1625,9 +256,8 @@
             Mediterráneo.
           </p>
           <a class="publication-link" href="https://www.tandfonline.com/doi/full/10.1080/03610918.2024.2399159" target="_blank" rel="noopener noreferrer">Leer artículo →</a>
-        </article>
-
-        <article class="pub-card">
+        </article><article class="pub-card">
+<span class="publication-number" aria-hidden="true">04</span>
           <h3>
             <a href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">
               Bayesian Joint Longitudinal Models for Assessing the Exploitation Rates of Sardine Stock in the Mediterranean Sea
@@ -1644,9 +274,8 @@
             con importantes diferencias entre países y sectores pesqueros.
           </p>
           <a class="publication-link" href="https://link.springer.com/article/10.1007/s00477-023-02649-0" target="_blank" rel="noopener noreferrer">Leer artículo →</a>
-        </article>
-
-        <article class="pub-card">
+        </article><article class="pub-card">
+<span class="publication-number" aria-hidden="true">05</span>
           <h3>
             <a href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">
               Bayesian Hierarchical Nonlinear Modelling of Intra-abdominal Volume During Pneumoperitoneum for Laparoscopic Surgery
@@ -1664,13 +293,11 @@
             la seguridad del paciente.
           </p>
           <a class="publication-link" href="https://upcommons.upc.edu/entities/publication/efefdcba-d39e-43cb-ab7d-149e91c5d741" target="_blank" rel="noopener noreferrer">Leer artículo →</a>
-        </article>
-      </div>
-    </section>
+        </article></div>
+  </section>
 
-
-    <section id="projects">
-      <h2>Proyectos seleccionados</h2>
+<section id="projects" class="projects-section">
+      <div class="section-heading-block"><div><p class="section-kicker">05 / Métodos y código</p><h2>Proyectos seleccionados</h2></div></div>
       <div class="projects">
         <article class="card">
           <h3><a href="https://github.com/gcalvobayarri/hot_hand_model">Hot hand model</a></h3>
@@ -1691,79 +318,24 @@
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contacto</h2>
-      <div class="contact-card">
-        <div>
-          <p class="eyebrow" style="color:#a9c4d8;">Ponte en contacto</p>
-          <p style="font-size:1.1rem; font-weight:600; margin-top:0.3rem;">
-            <a href="mailto:gabriel.calvo@uv.es" style="color:#f2efe6;">gabriel.calvo@uv.es</a>
-          </p>
-          <p>Facultad de Ciencias Matemáticas · Departamento de Estadística e Investigación Operativa · Universitat de València<br>
-          Avinguda de Vicent Andrés Estellés, 19 · 46100 Burjassot, València, España</p>
-        </div>
-      </div>
-      <div class="contact-links">
+<section id="contact" class="contact-section">
+    <p class="section-kicker">06 / Ponte en contacto</p><h2>Contacto</h2>
+    <div class="contact-layout">
+      <div><a class="contact-email" href="mailto:gabriel.calvo@uv.es">gabriel.calvo@uv.es</a><div class="contact-links">
         <a href="https://scholar.google.com/citations?user=3RSI4sgAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
         <a href="https://www.linkedin.com/in/gabriel-calvo-bayarri-797377b9/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </div>
-    </section>
-  </main>
+      </div></div>
+      <p class="contact-address">Facultad de Ciencias Matemáticas · Departamento de Estadística e Investigación Operativa · Universitat de València<br>
+          Avinguda de Vicent Andrés Estellés, 19 · 46100 Burjassot, València, España</p>
+    </div>
+  </section>
+</main>
 </div>
-
 <footer>
   <div class="container">
     <p>© 2026 Gabriel Calvo Bayarri · Alojado en GitHub Pages</p>
+    <a href="#top">Volver arriba ↑</a>
   </div>
 </footer>
-
-<script>
-  (() => {
-    const toggle = document.querySelector('.menu-toggle');
-    const menu = document.getElementById('primary-navigation');
-    const nav = toggle && toggle.closest('nav');
-
-    if (!toggle || !menu || !nav) return;
-
-    nav.classList.add('menu-enhanced');
-
-    const setOpen = (open) => {
-      toggle.setAttribute('aria-expanded', String(open));
-      toggle.setAttribute('aria-label', open ? toggle.dataset.closeLabel : toggle.dataset.openLabel);
-      menu.classList.toggle('is-open', open);
-    };
-
-    toggle.addEventListener('click', () => {
-      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
-    });
-
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setOpen(false));
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-        toggle.focus();
-      }
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!nav.contains(event.target) && toggle.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-      }
-    });
-
-    const desktop = window.matchMedia('(min-width: 761px)');
-    const closeOnDesktop = (event) => {
-      if (event.matches) setOpen(false);
-    };
-
-    if (typeof desktop.addEventListener === 'function') {
-      desktop.addEventListener('change', closeOnDesktop);
-    }
-  })();
-</script>
-
 </body>
 </html>
