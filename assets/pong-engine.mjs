@@ -18,7 +18,7 @@ export class Pong {
   }
   serve(direction) {
     const angle = (this.random() - .5) * .65;
-    const speed = this.difficulty === 'easy' ? 290 : 340;
+    const speed = this.difficulty === 'insane' ? 520 : this.difficulty === 'easy' ? 290 : 340;
     this.ball = { x: this.w / 2, y: this.h / 2, vx: direction * speed * Math.cos(angle), vy: speed * Math.sin(angle) };
     this.wait = .9;
   }
@@ -43,6 +43,8 @@ export class Pong {
       b.x += b.vx * step; b.y += b.vy * step;
       if (b.y < this.radius) { b.y = 2 * this.radius - b.y; b.vy = Math.abs(b.vy); }
       if (b.y > this.h - this.radius) { b.y = 2 * (this.h - this.radius) - b.y; b.vy = -Math.abs(b.vy); }
+      // The joke difficulty has zero uncertainty: it tracks every physics step.
+      if (this.difficulty === 'insane') this.ai = this.clampY(b.y);
       const leftFace = this.leftX + this.paddleWidth + this.radius;
       const rightFace = this.rightX - this.radius;
       if (b.vx < 0 && oldX >= leftFace && b.x <= leftFace && Math.abs(b.y - this.player) <= this.paddleHeight / 2 + this.radius) {
@@ -62,8 +64,11 @@ export class Pong {
   }
   bounce(center, direction) {
     const b = this.ball;
-    const relative = Math.max(-1, Math.min(1, (b.y - center) / (this.paddleHeight / 2)));
-    const speed = Math.min(Math.hypot(b.vx, b.vy) * 1.05, 590);
+    const insane = this.difficulty === 'insane';
+    const relative = insane && direction === -1
+      ? (this.player < this.h / 2 ? .85 : -.85)
+      : Math.max(-1, Math.min(1, (b.y - center) / (this.paddleHeight / 2)));
+    const speed = Math.min(Math.hypot(b.vx, b.vy) * (insane ? 1.18 : 1.05), insane ? 1100 : 590);
     const angle = relative * Math.PI * .31;
     b.vx = direction * speed * Math.cos(angle); b.vy = speed * Math.sin(angle);
   }

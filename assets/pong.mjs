@@ -1,11 +1,14 @@
-import { Pong } from './pong-engine.mjs?v=1';
+import { Pong } from './pong-engine.mjs?v=2';
 
 const es = document.documentElement.lang === 'es';
 const t = es ? {
   launch: '¿Un descanso?', title: 'Pong bayesiano', subtitle: 'Tú contra la incertidumbre. A cinco puntos.',
   you: 'Tú', rival: 'Incertidumbre', goal: 'A 5', close: 'Cerrar juego', start: 'Empezar', resume: 'Continuar', again: 'Otra partida', pause: 'Pausar',
   ready: '¿Podrás reducir la incertidumbre?', paused: 'Hasta la incertidumbre necesita un descanso.', win: '¡Evidencia a tu favor!', lose: 'La incertidumbre se impone. Por ahora.',
-  level: 'Dificultad', easy: 'Prior amable', normal: 'Posterior exigente',
+  level: 'Dificultad', easy: 'Prior amable', normal: 'Posterior exigente', insane: 'Posterior puntual insana',
+  insaneReady: 'Modo imposible: varianza cero. Piedad también.',
+  insaneWelcome: 'La posterior lo sabe todo. Tu autoestima corre por tu cuenta.',
+  insaneLost: 'No era falta de talento. Era una posterior degenerada.',
   help: 'Tu paleta está a la izquierda. Desliza el dedo por la pista o mueve el ratón. Teclado: ↑ / ↓ o W / S; espacio para pausar. Escape para cerrar.',
   welcome: 'La paleta es tuya. Las excusas, del modelo.',
   points: ['¡Tu hipótesis sigue en juego!', 'La incertidumbre acaba de perder un punto.', 'Buen ajuste. Sin sobreajuste.', 'Tu posterior acaba de mejorar.'],
@@ -15,7 +18,10 @@ const t = es ? {
   launch: 'Take a break?', title: 'Bayesian Pong', subtitle: 'You versus uncertainty. First to five.',
   you: 'You', rival: 'Uncertainty', goal: 'First to 5', close: 'Close game', start: 'Start', resume: 'Resume', again: 'Play again', pause: 'Pause',
   ready: 'Can you reduce uncertainty?', paused: 'Even uncertainty needs a break.', win: 'Evidence in your favour!', lose: 'Uncertainty wins. For now.',
-  level: 'Difficulty', easy: 'Friendly prior', normal: 'Demanding posterior',
+  level: 'Difficulty', easy: 'Friendly prior', normal: 'Demanding posterior', insane: 'Insane point-mass posterior',
+  insaneReady: 'Impossible mode: zero variance. Zero mercy.',
+  insaneWelcome: 'The posterior knows everything. Your self-esteem is on its own.',
+  insaneLost: 'Not a lack of talent. Just a degenerate posterior.',
   help: 'Your paddle is on the left. Slide a finger anywhere on the court or move your mouse. Keyboard: ↑ / ↓ or W / S; space to pause. Escape to close.',
   welcome: 'You control the paddle. Blame the model.',
   points: ['Your hypothesis is still in play!', 'Uncertainty just lost a point.', 'A good fit. No overfitting.', 'Your posterior just improved.'],
@@ -33,7 +39,7 @@ dialog.innerHTML = `
   <div class="pong-arena"><canvas class="pong-canvas" tabindex="0" role="img" aria-label="${t.title}" aria-describedby="pong-help">${t.help}</canvas>
   <div class="pong-overlay"><p></p><button type="button" class="pong-primary"></button></div></div>
   <p class="pong-message" role="status"></p>
-  <div class="pong-controls"><button type="button" class="pong-secondary" disabled>${t.pause}</button><label>${t.level}<select><option value="easy">${t.easy}</option><option value="normal">${t.normal}</option></select></label></div>
+  <div class="pong-controls"><button type="button" class="pong-secondary" disabled>${t.pause}</button><label>${t.level}<select><option value="easy">${t.easy}</option><option value="normal">${t.normal}</option><option value="insane">${t.insane}</option></select></label></div>
   <p class="pong-help" id="pong-help">${t.help}</p>`;
 // A failed/unsupported dialog must never leave an unusable launcher on the page.
 if (typeof dialog.showModal === 'function') initialise();
@@ -57,7 +63,7 @@ function initialise() {
   function update() {
     scores.forEach((node, i) => { node.textContent = game.score[i]; });
     overlay.hidden = state === 'running';
-    overlayText.textContent = state === 'ready' ? t.ready : state === 'paused' ? t.paused : game.winner === 0 ? t.win : t.lose;
+    overlayText.textContent = state === 'ready' ? (level.value === 'insane' ? t.insaneReady : t.ready) : state === 'paused' ? t.paused : game.winner === 0 ? t.win : t.lose;
     action.textContent = state === 'ready' ? t.start : state === 'paused' ? t.resume : t.again;
     pause.disabled = state === 'ready' || state === 'over';
     pause.textContent = state === 'paused' ? t.resume : t.pause;
@@ -96,7 +102,7 @@ function initialise() {
     const event = game.tick((now - last) / 1000, direction); last = now;
     if (event) {
       if (event.winner !== null) {
-        state = 'over'; message.textContent = event.winner === 0 ? t.won : t.lost; stop();
+        state = 'over'; message.textContent = event.winner === 0 ? t.won : game.difficulty === 'insane' ? t.insaneLost : t.lost; stop();
       } else {
         const lines = event.scorer === 0 ? t.points : t.misses;
         message.textContent = lines[Math.floor(Math.random() * lines.length)];
@@ -108,7 +114,7 @@ function initialise() {
   }
   function play() {
     if (state === 'running') return;
-    if (state !== 'paused') { game.difficulty = level.value; game.reset(); message.textContent = t.welcome; }
+    if (state !== 'paused') { game.difficulty = level.value; game.reset(); message.textContent = level.value === 'insane' ? t.insaneWelcome : t.welcome; }
     state = 'running'; keys.clear(); update(); canvas.focus({ preventScroll: true });
     last = performance.now(); frame = requestAnimationFrame(loop);
   }
@@ -121,6 +127,12 @@ function initialise() {
     freeze(); stop(); document.body.style.overflow = oldOverflow; launch.focus({ preventScroll: true });
   });
   action.addEventListener('click', play);
+  level.addEventListener('change', () => {
+    if (state === 'running' || state === 'paused') return;
+    game.difficulty = level.value; game.reset(); state = 'ready';
+    message.textContent = level.value === 'insane' ? t.insaneWelcome : t.welcome;
+    update(); draw();
+  });
   pause.addEventListener('click', () => state === 'running' ? freeze() : play());
   canvas.addEventListener('keydown', (event) => {
     const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
