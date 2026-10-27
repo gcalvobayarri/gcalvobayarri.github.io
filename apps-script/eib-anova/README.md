@@ -1,12 +1,12 @@
 # ANOVA self-assessment pilot
 
-This pilot replaces Google Forms for the first EIB quiz only. It has a branded quiz interface, requires a student name, grades all 12 questions, shows individual feedback after submission, and saves the attempt to a private Google spreadsheet. Students cannot open the response spreadsheet or see other students' results.
+This pilot replaces Google Forms for the first EIB quiz only. It has a branded quiz interface, requires a student name, grades all 11 questions, shows individual feedback after submission, and saves the attempt to a private Google spreadsheet. Students cannot open the response spreadsheet or see other students' results.
 
 ## Files
 
 - `Code.gs`: Google Apps Script backend, the initial ANOVA question bank, and spreadsheet setup.
 - `Index.html`: quiz interface served by Apps Script; it typesets inline and display LaTeX with MathJax 3 loaded from jsDelivr, and lays out question headings separately from their answer groups.
-- `site/es/docencia/anova.html`: matching Spanish website page; its deployment URL is a placeholder until the web app is deployed.
+- `site/es/docencia/anova.html`: matching Spanish website page; the deployed Apps Script URL is connected.
 
 ## One-time setup in your Google account
 
@@ -17,7 +17,7 @@ This pilot replaces Google Forms for the first EIB quiz only. It has a branded q
    - `Respuestas`: private individual submissions, including name, timestamp, score and answers.
    - `Resumen`: attempt count, mean score and percentage correct per question.
 4. In Apps Script, choose **Deploy → New deployment → Web app**. Set **Execute as** to your account. To let students answer without signing into Google, set access to **Anyone**. The app exposes only the quiz and submission functions; it does not expose a function to read saved responses.
-5. Copy the deployment URL ending in `/exec`. It will be inserted in the website page, and the page can then be linked from the Spanish Teaching section.
+5. Copy the deployment URL ending in `/exec` into the website page, then merge the site change to publish the pilot.
 
 For an already-deployed pilot, replace both `Code.gs` and `Index.html` with the updated files, save, then open **Deploy → Manage deployments**, edit the active web app deployment, select **New version**, and deploy. MathJax is loaded from the jsDelivr CDN, so the browser needs internet access to render formulas; the quiz still displays its text if that external script cannot load.
 
