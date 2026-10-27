@@ -95,8 +95,8 @@ function getQuiz() {
     description: QUIZ_DESCRIPTION,
     questions: questions.map((question, index) => ({
       number: index + 1,
-      question: plainText_(question.question),
-      options: question.options.map(plainText_)
+      question: mathText_(question.question),
+      options: question.options.map(mathText_)
     }))
   };
 }
@@ -142,14 +142,14 @@ function submitQuiz(payload) {
       const question = questions[index];
       return {
         number: index + 1,
-        question: plainText_(question.question),
+        question: mathText_(question.question),
         selectedIndex: answer,
         correctIndex: question.correctIndex,
-        selectedText: plainText_(question.options[answer]),
-        correctText: plainText_(question.options[question.correctIndex]),
+        selectedText: mathText_(question.options[answer]),
+        correctText: mathText_(question.options[question.correctIndex]),
         correct: answer === question.correctIndex,
-        rationale: plainText_(question.rationale || ''),
-        hint: plainText_(question.hint || '')
+        rationale: mathText_(question.rationale || ''),
+        hint: mathText_(question.hint || '')
       };
     })
   };
@@ -187,6 +187,12 @@ function plainText_(value) {
   return normalized.replace(/\$([^$]+)\$/g, (_, expression) => latexToPlainText_(expression))
     .replace(/\\\((.*?)\\\)/g, (_, expression) => latexToPlainText_(expression))
     .replace(/\\\[([\s\S]*?)\\\]/g, (_, expression) => latexToPlainText_(expression));
+}
+
+// Preserve LaTeX delimiters for MathJax in the quiz while repairing tab
+// characters that may have replaced the leading backslash in \text commands.
+function mathText_(value) {
+  return String(value || '').replace(/\text\{/g, '\\text{');
 }
 
 function latexToPlainText_(expression) {
