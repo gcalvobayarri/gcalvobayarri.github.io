@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cuestionario de práctica de regresión lineal múltiple para Experimentación Integrada en Biología.">
+  <title>Cuestionario de regresión lineal múltiple | Docencia — Gabriel Calvo Bayarri</title>
+  <link rel="stylesheet" href="/assets/site.css?v=20260910-warm">
+  <style>
+    .quiz-page{padding:clamp(40px,8vw,92px) 0 70px}.quiz-hero{max-width:760px;margin:0 auto 26px;text-align:center}.quiz-hero h1{font-size:clamp(2.2rem,5vw,3.7rem);margin:0 0 18px}.quiz-hero p:not(.eyebrow){color:var(--muted);font-size:1.08rem}.quiz-frame-wrap{overflow:hidden;border:1px solid var(--line);border-radius:24px;background:var(--paper);box-shadow:var(--shadow)}#regression-quiz{display:block;width:100%;height:900px;border:0;background:var(--paper)}.quiz-note{margin:16px auto 0;max-width:800px;color:var(--muted);font-size:.86rem;text-align:center}.quiz-back{display:inline-flex;margin-top:24px;text-decoration:none}.quiz-unavailable{margin:24px auto;padding:24px;max-width:700px;border:1px solid var(--line);border-radius:18px;background:var(--white);color:var(--muted);text-align:center}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="container"><nav aria-label="Navegación principal"><a class="brand" href="/es/" aria-label="Gabriel Calvo Bayarri — inicio"><span class="brand-mark" aria-hidden="true">GCB</span><span class="brand-copy"><span class="brand-name">Gabriel Calvo Bayarri</span><span class="brand-role">Estadístico bayesiano</span></span></a><a class="button secondary" href="/es/#teaching">Volver a Docencia</a></nav></div></header>
+  <main class="container quiz-page"><div class="quiz-hero"><p class="eyebrow">Experimentación Integrada en Biología · Autoevaluación</p><h1>Regresión lineal múltiple</h1><p>Responde las preguntas y revisa tu puntuación, las respuestas correctas y sus explicaciones al terminar.</p></div>
+    <div class="quiz-frame-wrap"><iframe id="regression-quiz" title="Cuestionario de regresión lineal múltiple" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="quiz-unavailable" id="quiz-unavailable">La autoevaluación quedará disponible en esta página cuando se conecte la aplicación del cuestionario.</div></div>
+    <p class="quiz-note">Tu nombre y tus respuestas se utilizan para el seguimiento docente. El resumen de respuestas de la clase no se comparte con los estudiantes.</p><a class="button secondary quiz-back" href="/es/#teaching">← Volver a Docencia</a>
+  </main>
+  <script>
+    const webAppUrl = '';
+    const frame=document.getElementById('regression-quiz'),unavailable=document.getElementById('quiz-unavailable');
+    if(webAppUrl.startsWith('https://script.google.com/macros/s/')&&webAppUrl.endsWith('/exec')){frame.src=webAppUrl;unavailable.hidden=true}else{frame.hidden=true}
+    window.addEventListener('message',event=>{if(event.source!==frame.contentWindow||!event.data||event.data.type!=='eib-regression-height')return;frame.style.height=Math.max(700,Math.min(Number(event.data.height)||900,8000))+'px'});
+  </script>
+</body>
+</html>
