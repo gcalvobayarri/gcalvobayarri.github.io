@@ -5,7 +5,7 @@ This pilot replaces Google Forms for the first EIB quiz only. It has a branded q
 ## Files
 
 - `Code.gs`: Google Apps Script backend, the initial ANOVA question bank, and spreadsheet setup.
-- `Index.html`: quiz interface served by Apps Script.
+- `Index.html`: quiz interface served by Apps Script; it typesets inline and display LaTeX with MathJax 3 loaded from jsDelivr.
 - `site/es/docencia/anova.html`: matching Spanish website page; its deployment URL is a placeholder until the web app is deployed.
 
 ## One-time setup in your Google account
@@ -18,6 +18,8 @@ This pilot replaces Google Forms for the first EIB quiz only. It has a branded q
    - `Resumen`: attempt count, mean score and percentage correct per question.
 4. In Apps Script, choose **Deploy → New deployment → Web app**. Set **Execute as** to your account. To let students answer without signing into Google, set access to **Anyone**. The app exposes only the quiz and submission functions; it does not expose a function to read saved responses.
 5. Copy the deployment URL ending in `/exec`. It will be inserted in the website page, and the page can then be linked from the Spanish Teaching section.
+
+For an already-deployed pilot, replace both `Code.gs` and `Index.html` with the updated files, save, then open **Deploy → Manage deployments**, edit the active web app deployment, select **New version**, and deploy. MathJax is loaded from the jsDelivr CDN, so the browser needs internet access to render formulas; the quiz still displays its text if that external script cannot load.
 
 Because public respondents can submit data to a script running as the owner, keep the Apps Script code limited to this quiz workflow and do not add functions that return spreadsheet data. The current pilot validates names and answer indices, writes only the submitted attempt, and uses a script lock for simultaneous submissions.
 
