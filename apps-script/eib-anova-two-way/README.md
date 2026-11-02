@@ -11,7 +11,7 @@ Cuestionario de práctica de 10 preguntas con corrección individual, explicacio
 ## Puesta en marcha
 
 1. Crear un proyecto nuevo en Google Apps Script y copiar `Code.gs`; añadir un archivo HTML llamado `Index` y copiar `Index.html`.
-2. Ejecutar una vez `setupTwoWayANOVAQuiz_` y autorizar la creación de la hoja de respuestas.
+2. Ejecutar una vez `setupTwoWayANOVAQuiz` y autorizar la creación de la hoja de respuestas.
 3. Crear un despliegue **Aplicación web** que se ejecute como el propietario. Para que el estudiantado pueda responder sin iniciar sesión, configurar el acceso como **Cualquier usuario**. Copiar la URL `/exec`.
 4. Pegar esa URL en `webAppUrl` dentro de `es/docencia/anova-dos-vias.html` y actualizar el archivo en el repositorio.
 5. Tras cualquier cambio en Apps Script, editar el despliegue activo y seleccionar una versión nueva.
