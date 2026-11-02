@@ -1,6 +1,6 @@
 # Regresión lineal múltiple — piloto de autoevaluación
 
-Cuestionario de 10 preguntas para Experimentación Integrada en Biología. Mantiene el formato del piloto ANOVA: nombre obligatorio, corrección individual, explicación y pista después del envío, fórmulas LaTeX mediante MathJax y registro privado de respuestas en una hoja de cálculo.
+Cuestionario de 7 preguntas para Experimentación Integrada en Biología. Mantiene el formato del piloto ANOVA: nombre obligatorio, corrección individual, explicación y pista después del envío, fórmulas LaTeX mediante MathJax y registro privado de respuestas en una hoja de cálculo.
 
 ## Configuración en Apps Script
 
