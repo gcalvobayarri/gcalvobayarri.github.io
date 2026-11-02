@@ -121,7 +121,7 @@ function doGet() {
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
-function setupTwoWayANOVAQuiz_() {
+function setupTwoWayANOVAQuiz() {
   const properties = PropertiesService.getScriptProperties();
   const savedId = properties.getProperty(RESPONSE_BOOK_KEY);
   if (savedId) return SpreadsheetApp.openById(savedId).getUrl();
@@ -226,7 +226,7 @@ function loadQuestions_() {
 
 function openResponseBook_() {
   const id = PropertiesService.getScriptProperties().getProperty(RESPONSE_BOOK_KEY);
-  if (!id) throw new Error('Primero ejecuta setupTwoWayANOVAQuiz_ para crear la hoja de respuestas.');
+  if (!id) throw new Error('Primero ejecuta setupTwoWayANOVAQuiz para crear la hoja de respuestas.');
   return SpreadsheetApp.openById(id);
 }
 
