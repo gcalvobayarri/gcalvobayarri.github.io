@@ -12,13 +12,11 @@
 <body>
   <header class="site-header"><div class="container"><nav aria-label="Navegación principal"><a class="brand" href="/es/" aria-label="Gabriel Calvo Bayarri — inicio"><span class="brand-mark" aria-hidden="true">GCB</span><span class="brand-copy"><span class="brand-name">Gabriel Calvo Bayarri</span><span class="brand-role">Estadístico bayesiano</span></span></a><a class="button secondary" href="/es/#teaching">Volver a Docencia</a></nav></div></header>
   <main class="container quiz-page"><div class="quiz-hero"><p class="eyebrow">Experimentación Integrada en Biología · Autoevaluación</p><h1>ANCOVA</h1><p>Responde las preguntas y revisa tu puntuación, las respuestas correctas y sus explicaciones al terminar.</p></div>
-    <div class="quiz-frame-wrap"><iframe id="ancova-quiz" title="Cuestionario de ANCOVA" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="quiz-unavailable" id="quiz-unavailable">La autoevaluación quedará disponible en esta página cuando se conecte la aplicación del cuestionario.</div></div>
+    <div class="quiz-frame-wrap"><iframe id="ancova-quiz" src="https://script.google.com/macros/s/AKfycbwzm-qr2Ze5PYpm7Dcs1J4ayt2GcktoB1CbkpSOcAcx7M_h1Vngoyd_e29BknfOtAj9/exec" title="Cuestionario de ANCOVA" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><div class="quiz-unavailable" id="quiz-unavailable" hidden>La autoevaluación quedará disponible en esta página cuando se conecte la aplicación del cuestionario.</div></div>
     <p class="quiz-note">Tu nombre y tus respuestas se utilizan para el seguimiento docente. El resumen de respuestas de la clase no se comparte con los estudiantes.</p><a class="button secondary quiz-back" href="/es/#teaching">← Volver a Docencia</a>
   </main>
   <script>
-    const webAppUrl = 'https://script.google.com/macros/s/AKfycbwzm-qr2Ze5PYpm7Dcs1J4ayt2GcktoB1CbkpSOcAcx7M_h1Vngoyd_e29BknfOtAj9/exec';
-    const frame=document.getElementById('ancova-quiz'),unavailable=document.getElementById('quiz-unavailable');
-    if(webAppUrl.startsWith('https://script.google.com/macros/s/')&&webAppUrl.endsWith('/exec')){frame.src=webAppUrl;unavailable.hidden=true}else{frame.hidden=true}
+    const frame=document.getElementById('ancova-quiz');
     window.addEventListener('message',event=>{if(event.source!==frame.contentWindow||!event.data||event.data.type!=='eib-ancova-height')return;frame.style.height=Math.max(700,Math.min(Number(event.data.height)||900,8000))+'px'});
   </script>
 </body>
