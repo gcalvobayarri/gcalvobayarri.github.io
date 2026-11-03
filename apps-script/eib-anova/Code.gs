@@ -12,18 +12,6 @@ const ANOVA_QUESTIONS = [
     "hint": "Piensa en lo que le ocurre a la tasa global de error cuando se realizan varios contrastes estadísticos simultáneos."
   },
   {
-    "question": "En el contexto del diseño de experimentos para un ANOVA de una vía, ¿cuál es la diferencia fundamental entre una réplica y una medición repetida?",
-    "options": [
-      "Una réplica sirve para calcular la variabilidad entre grupos, mientras que la medición repetida cuantifica únicamente la variabilidad intra-grupos.",
-      "Una réplica aplica el tratamiento a distintas unidades experimentales independientes, mientras que una medición repetida toma múltiples datos de la misma unidad experimental.",
-      "Una réplica requiere que el factor tenga al menos tres niveles, mientras que una medición repetida se aplica solo en diseños de dos niveles.",
-      "La réplica incrementa los grados de libertad del denominador, mientras que la medición repetida solo modifica los del numerador."
-    ],
-    "correctIndex": 1,
-    "rationale": "La réplica garantiza unidades independientes para estimar la variabilidad aleatoria pura, a diferencia de medir varias veces la misma unidad.",
-    "hint": "Considera la independencia de las unidades experimentales frente a tomar múltiples observaciones sobre un mismo elemento."
-  },
-  {
     "question": "En la descomposición de la variabilidad del ANOVA de una vía ($SC_{\\text{Total}} = SC_{\text{Entre}} + SC_{\text{Intra}}$), ¿qué cuantifica concretamente la Suma de Cuadrados Entre grupos ($SC_{\text{Entre}}$)?",
     "options": [
       "La diferencia al cuadrado entre la media muestral de cada grupo y la media global, ponderada por el tamaño del grupo $n_i$.",
@@ -46,18 +34,6 @@ const ANOVA_QUESTIONS = [
     "correctIndex": 1,
     "rationale": "En la codificación con variables indicadoras, la constante es la media del grupo de referencia y cada coeficiente mide el incremento o decremento respecto a ella.",
     "hint": "Recuerda que la categoría que no tiene variable indicadora asociada actúa como nivel de referencia."
-  },
-  {
-    "question": "En la inferencia del ANOVA, ¿cuál es la interpretación formal del $p$-valor asociado al estadístico de contraste $F_{\\text{obs}}$?",
-    "options": [
-      "Es la probabilidad de que la hipótesis nula $H_0: \\mu_1 = \\mu_2 = \\dots = \\mu_k$ sea falsa dados los datos observados.",
-      "Es la probabilidad de cometer un error de Tipo II al rechazar que al menos una media es diferente de las demás.",
-      "Es la probabilidad de obtener un estadístico $F$ igual o mayor que $F_{\\text{obs}}$, asumiendo que la hipótesis nula de igualdad de medias es cierta.",
-      "Es la proporción de variabilidad total que queda explicada por las diferencias existentes entre las medias de los grupos."
-    ],
-    "correctIndex": 2,
-    "rationale": "El $p$-valor mide la cola derecha de la distribución $F_{k-1, N-k}$ a partir del valor observado bajo el supuesto de que $H_0$ es verdadera.",
-    "hint": "Recuerda que se evalúa la probabilidad de observar una discrepancia igual o mayor bajo la hipótesis nula."
   },
   {
     "question": "Si al comprobar los supuestos de un ANOVA de un factor con $k = 5$ grupos se detecta una desviación significativa de la normalidad en uno de los grupos mediante Shapiro-Wilk, pero cada grupo cuenta con un tamaño muestral de $n_i = 30$ observaciones, ¿por qué es metodológicamente razonable mantener el análisis paramétrico?",
@@ -94,18 +70,6 @@ const ANOVA_QUESTIONS = [
     "correctIndex": 2,
     "rationale": "El método de Tukey ajusta las diferencias por parejas para controlar la probabilidad de cometer errores de Tipo I en el conjunto de comparaciones.",
     "hint": "Considera el procedimiento específico diseñado para mantener el control del error Tipo I en modelos ANOVA cuando se cumplen normalidad y homocedasticidad."
-  },
-  {
-    "question": "En un reporte de comparaciones múltiples formateado mediante grupos homogéneos con letras (por ejemplo, grupo $a$ y grupo $b$), ¿qué indica el hecho de que dos tratamientos compartan la letra $a$?",
-    "options": [
-      "Que la varianza interna de ambos tratamientos es igual a la variabilidad total observada en los residuos.",
-      "Que ambos tratamientos presentan evidencias significativas de ser distintos de todos los demás niveles evaluados.",
-      "Que las medias poblacionales de ambos tratamientos son numéricamente iguales a cero.",
-      "Que no existen diferencias estadísticamente significativas entre la media de respuesta de ambos tratamientos al nivel de significación fijado."
-    ],
-    "correctIndex": 3,
-    "rationale": "La pertenencia al mismo grupo homogéneo señala que el contraste entre esos dos tratamientos particulares no resulta significativo.",
-    "hint": "Recuerda la condición necesaria para considerar que dos niveles del factor pertenecen al mismo grupo homogéneo."
   },
   {
     "question": "Si el supuesto de normalidad no se sostiene en un estudio con muestras pequeñas ($n_i < 30$), ¿cuál es el procedimiento global no paramétrico adecuado y qué función de R se utiliza para estudiar posteriormente las diferencias por parejas?",
