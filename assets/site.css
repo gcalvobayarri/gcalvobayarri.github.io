@@ -294,3 +294,29 @@ footer a { padding: 8px 0; font-size: .85rem; color: var(--muted); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Course resources grouped by topic in the same order in both languages. */
+.course-topics{padding:32px}
+.topics-intro{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.topics-intro>p{margin:0;font-size:1.1rem;font-weight:600;color:var(--ink)}
+.topics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.topic-card{min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:var(--paper)}
+.topic-heading{padding:23px 24px 20px;border-bottom:1px solid var(--line);background:var(--blue-light)}
+.topic-heading .eyebrow{margin:0 0 9px;font-size:.75rem}
+.topic-heading h4{margin:0;font-size:1.45rem;line-height:1.25;letter-spacing:-.035em}
+.topic-resources{padding:0 24px}
+.topic-resource{padding:22px 0}
+.topic-resource+.topic-resource{border-top:1px solid var(--line)}
+.topic-resource h5{margin:0;font-size:1rem;font-weight:600}
+.topic-resource .episode-top{margin-bottom:14px}
+.topic-resource p{margin:10px 0 16px;color:var(--muted);font-size:.95rem;line-height:1.55}
+.topic-resource audio{display:block;width:100%;min-width:0;height:44px}
+.topic-resource .audio-download{margin-top:12px}
+.topic-pending p{margin-bottom:0}
+.topic-quiz .publication-link{display:inline-flex;min-height:36px;align-items:center}
+.course-materials{display:grid;grid-template-columns:1fr 1.5fr;gap:24px;align-items:center;margin-top:28px;padding-top:26px;border-top:1px solid var(--line)}
+.course-materials .eyebrow{margin:0 0 7px;font-size:.75rem}
+.course-materials h4{margin:0;font-size:1.2rem}
+.course-materials>p{margin:0;color:var(--muted);font-size:.95rem}
+@media(max-width:800px){.course-topics{padding:24px}.topics-grid{grid-template-columns:1fr}.topics-intro{align-items:flex-start;flex-direction:column;gap:8px}.topics-intro .panel-count{white-space:normal}.course-materials{grid-template-columns:1fr;gap:14px}}
+@media(max-width:560px){.course-topics{padding:22px 18px}.topic-heading{padding:20px}.topic-heading h4{font-size:1.35rem}.topic-resources{padding:0 20px}.topic-resource .episode-top{gap:10px}}
