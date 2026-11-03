@@ -36,18 +36,6 @@ const ANCOVA_QUESTIONS = [
     "hint": "Recuerda sumar el coeficiente de la variable indicadora al término independiente de referencia."
   },
   {
-    "question": "En la salida del modelo para los salmones, el contraste asociado al coeficiente de $\\text{logWeight}$ presenta un p-valor de $0{,}0001$. ¿Qué conclusión estadística se deriva de este resultado al nivel $\\alpha = 0{,}05$?",
-    "options": [
-      "Las rectas asociadas a los dos ambientes son perpendiculares entre sí.",
-      "El efecto del ambiente sobre el consumo de oxígeno no depende del peso del salmón.",
-      "No existe evidencia suficiente para afirmar que el peso esté relacionado con el consumo de oxígeno.",
-      "Existe evidencia significativa de una relación lineal entre el peso y el consumo de oxígeno, manteniendo constante el ambiente."
-    ],
-    "correctIndex": 3,
-    "rationale": "El rechazo de $H_0: \\beta_{\\text{logWeight}} = 0$ confirma la existencia de una relación lineal estadísticamente significativa entre el peso y el consumo de oxígeno.",
-    "hint": "Evalúa qué hipótesis nula se somete a contraste al analizar el coeficiente de una covariable continua."
-  },
-  {
     "question": "En un modelo ANCOVA con una covariable $X$ y un factor de dos niveles ($f_1$ nivel de referencia, $f_2$), expresado como $Y_i = \\beta_0 + \\beta_1 D_i + \\beta_2 X_i + \\beta_3 D_i X_i + \\varepsilon_i$, ¿qué representa geométricamente el parámetro $\\beta_3$?",
     "options": [
       "La pendiente de la recta de regresión ajustada para el nivel de referencia $f_1$.",
@@ -60,18 +48,6 @@ const ANCOVA_QUESTIONS = [
     "hint": "Compara las ecuaciones obtenidas evaluando $D_i = 0$ y $D_i = 1$."
   },
   {
-    "question": "En el estudio del control de la población de conejos (Figura 1.3), el modelo ajustado es $\\hat{\\text{densidad}} = 2{,}4271 + 0{,}0991 \\text{Año} + 1{,}5048 \\text{region[T.R2]} - 0{,}3140 \\text{Año}\\cdot\\text{region[T.R2]}$. ¿Cuál es la tasa de cambio media anual estimada de la densidad de conejos en la Región 2 (`R2`)?",
-    "options": [
-      "Disminuye $0{,}2149$ unidades por año.",
-      "Disminuye $0{,}3140$ unidades por año.",
-      "Aumenta $1{,}5048$ unidades por año.",
-      "Aumenta $0{,}0991$ unidades por año."
-    ],
-    "correctIndex": 0,
-    "rationale": "La pendiente de la Región 2 se obtiene sumando la pendiente de referencia ($0{,}0991$) y el coeficiente de interacción ($-0{,}3140$), lo que resulta en $-0{,}2149$.",
-    "hint": "Combina los coeficientes asociados a la covariable principal y al término de interacción para la categoría deseada."
-  },
-  {
     "question": "En el ejemplo de los conejos con interacción entre `Año` y `region`, el contraste para la interacción $\\text{Año:region[T.R2]}$ dio un p-valor $p < 2 \\cdot 10^{-16}$. ¿Qué implica biológicamente este resultado en el contexto del experimento?",
     "options": [
       "Las dos rectas ajustadas son perfectamente paralelas a lo largo de los años.",
@@ -82,42 +58,6 @@ const ANCOVA_QUESTIONS = [
     "correctIndex": 2,
     "rationale": "El rechazo de la hipótesis nula de interacción confirma que la pendiente (evolución en el tiempo) es significativamente distinta entre ambas regiones.",
     "hint": "Piensa en lo que refleja el cambio de pendiente entre las regiones con respecto al tiempo."
-  },
-  {
-    "question": "En el modelo con interacción del ejemplo de los conejos, ¿cómo se interpreta el término independiente estimado para la Región 2, que equivale a $2{,}4271 + 1{,}5048 = 3{,}9319$?",
-    "options": [
-      "La densidad máxima teórica que puede alcanzar la población de conejos en la Región 1.",
-      "La tasa media de reducción anual de la población en la Región 2.",
-      "La densidad estimada de conejos en la Región 2 al inicio del estudio (Año = 0).",
-      "La diferencia de densidad promedio entre regiones al cabo del último año del estudio."
-    ],
-    "correctIndex": 2,
-    "rationale": "Al evaluar la ecuación en $\\text{Año} = 0$, los términos con la variable continua se anulan, quedando únicamente el intercepto específico de la Región 2.",
-    "hint": "Analiza el valor predicho por la ecuación ajustada cuando la variable temporal es igual a cero."
-  },
-  {
-    "question": "Si un factor en un modelo ANCOVA tuviera más de dos niveles (por ejemplo, tres ambientes distintos en lugar de dos), ¿por qué no sería suficiente interpretar separadamente los p-valores t individuales de los coeficientes de cada nivel?",
-    "options": [
-      "Porque al tener más de dos niveles, el modelo deja de ser un modelo lineal.",
-      "Porque los coeficientes $t$ individuales solo evalúan diferencias respecto al nivel de referencia y no el efecto global del factor.",
-      "Porque los contrastes $t$ pierden validez probabilística cuando la covariable es numérica.",
-      "Porque el software R-Commander no permite calcular coeficientes individuales para más de dos niveles."
-    ],
-    "correctIndex": 1,
-    "rationale": "Para evaluar si un factor con múltiples niveles tiene un efecto global significativo, es necesario realizar un contraste simultáneo mediante herramientas como `drop1` o sumas de cuadrados.",
-    "hint": "Considera la función de la categoría base y el procedimiento alternativo mencionado en el texto (como `drop1`)."
-  },
-  {
-    "question": "Según los comentarios finales del texto, ¿qué tipo de modelo lineal se obtiene si en un ANCOVA la estructura del estudio requiere incorporar efectos aleatorios?",
-    "options": [
-      "Un modelo ANOVA no paramétrico.",
-      "Un modelo de regresión lineal simple ponderado.",
-      "Un modelo de regresión logística multivariante.",
-      "Un modelo lineal mixto."
-    ],
-    "correctIndex": 3,
-    "rationale": "Al combinar variables explicativas de un ANCOVA con efectos aleatorios asociados al diseño muestral o experimental, se obtiene un modelo lineal mixto.",
-    "hint": "Identifica la familia de modelos que combina efectos fijos (factores/covariables) y efectos aleatorios."
   }
 ];
 
@@ -153,6 +93,42 @@ function setupANCOVAQuiz_() {
   bank.setColumnWidth(8, 420);
   bank.getRange(2, 1, bankRows.length, bankHeaders.length).setWrap(true).setVerticalAlignment('top');
 
+  initializeANCOVAResults_(spreadsheet);
+
+  properties.setProperty(RESPONSE_BOOK_KEY, spreadsheet.getId());
+  Logger.log('Hoja de respuestas: ' + spreadsheet.getUrl());
+  return spreadsheet.getUrl();
+}
+
+/**
+ * Rewrites only the question bank with the canonical question text.
+ * Existing student responses in the Respuestas sheet are left untouched.
+ * Run once after updating the source if the Preguntas sheet contains malformed TeX.
+ */
+function repairANCOVAQuestionBank_() {
+  const spreadsheet = openResponseBook_();
+  const sheet = spreadsheet.getSheetByName('Preguntas');
+  if (!sheet) throw new Error('No se ha encontrado la hoja Preguntas.');
+  const previousCount = Math.max(0, sheet.getLastRow() - 1);
+  const rows = ANCOVA_QUESTIONS.map(question => [question.question, ...question.options,
+    String.fromCharCode(65 + question.correctIndex), question.rationale, question.hint]);
+  if (previousCount !== rows.length) {
+    // Keep previous attempts and their summary in separate historical tabs.
+    const suffix = '_historico_' + new Date().getTime();
+    ['Respuestas', 'Resumen'].forEach(name => {
+      const previous = spreadsheet.getSheetByName(name);
+      if (previous) previous.setName(name + suffix);
+    });
+    initializeANCOVAResults_(spreadsheet);
+  }
+  sheet.getRange(2, 1, rows.length, 8).setValues(rows);
+  if (previousCount > rows.length) {
+    sheet.getRange(rows.length + 2, 1, previousCount - rows.length, 8).clearContent();
+  }
+  return 'ANCOVA actualizado a ' + rows.length + ' preguntas. Los intentos anteriores se conservan en las pestañas históricas cuando cambia el número de preguntas.';
+}
+
+function initializeANCOVAResults_(spreadsheet) {
   const responses = spreadsheet.insertSheet('Respuestas');
   const headers = ['Fecha y hora', 'Nombre y apellidos', 'Puntuación', 'Aciertos'];
   ANCOVA_QUESTIONS.forEach((_, index) => headers.push('P' + (index + 1) + ' respuesta', 'P' + (index + 1) + ' correcta'));
@@ -183,24 +159,6 @@ function setupANCOVAQuiz_() {
   summary.setColumnWidth(1, 680);
   summary.setColumnWidth(2, 120);
   summary.setColumnWidth(3, 180);
-
-  properties.setProperty(RESPONSE_BOOK_KEY, spreadsheet.getId());
-  Logger.log('Hoja de respuestas: ' + spreadsheet.getUrl());
-  return spreadsheet.getUrl();
-}
-
-/**
- * Rewrites only the question bank with the canonical question text.
- * Existing student responses in the Respuestas sheet are left untouched.
- * Run once after updating the source if the Preguntas sheet contains malformed TeX.
- */
-function repairANCOVAQuestionBank_() {
-  const sheet = openResponseBook_().getSheetByName('Preguntas');
-  if (!sheet) throw new Error('No se ha encontrado la hoja Preguntas.');
-  const rows = ANCOVA_QUESTIONS.map(question => [question.question, ...question.options,
-    String.fromCharCode(65 + question.correctIndex), question.rationale, question.hint]);
-  sheet.getRange(2, 1, rows.length, 8).setValues(rows);
-  return 'Banco de preguntas ANCOVA actualizado; las respuestas guardadas se han conservado.';
 }
 
 function getQuiz() {
