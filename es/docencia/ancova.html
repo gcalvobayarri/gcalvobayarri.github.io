@@ -17,7 +17,7 @@
   </main>
   <script>
     const webAppUrl = 'https://script.google.com/macros/s/AKfycbwzm-qr2Ze5PYpm7Dcs1J4ayt2GcktoB1CbkpSOcAcx7M_h1Vngoyd_e29BknfOtAj9/exec';
-    const frame=document.getElementById('two-way-anova-quiz'),unavailable=document.getElementById('quiz-unavailable');
+    const frame=document.getElementById('ancova-quiz'),unavailable=document.getElementById('quiz-unavailable');
     if(webAppUrl.startsWith('https://script.google.com/macros/s/')&&webAppUrl.endsWith('/exec')){frame.src=webAppUrl;unavailable.hidden=true}else{frame.hidden=true}
     window.addEventListener('message',event=>{if(event.source!==frame.contentWindow||!event.data||event.data.type!=='eib-ancova-height')return;frame.style.height=Math.max(700,Math.min(Number(event.data.height)||900,8000))+'px'});
   </script>
